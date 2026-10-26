@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="cs" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kavárna & Pekárna U Jiřího — Žižkov, Praha</title>
+    <meta name="description" content="Čerstvě pražená výběrová káva, domácí kváskové pečivo a vzdušný prostor pro vaše ráno i odpolední setkání." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: -0.011em; }
+        .font-editorial { font-family: 'Instrument Serif', Georgia, serif; letter-spacing: -0.02em; }
+    </style>
+</head>
+<body class="bg-[#FBF9F5] text-[#231F1D] antialiased">
+
+    <!-- Floating Minimalist Navigation -->
+    <header class="sticky top-0 z-40 backdrop-blur-xl bg-[#FBF9F5]/85 border-[#EBE5DC] border-b">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
+            <a href="#" class="text-lg font-semibold tracking-tight flex items-center gap-2.5">
+                <span>Kavárna & Pekárna U Jiřího</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm text-[#6E655F]">
+                <a href="#about" class="hover:opacity-100 transition" data-cz="O nás" data-en="Philosophy">O nás</a>
+                <a href="#services" class="hover:opacity-100 transition" data-cz="Ceník & Služby" data-en="Services & Menu">Ceník & Služby</a>
+                <a href="#reviews" class="hover:opacity-100 transition" data-cz="Recenze" data-en="Reviews">Recenze</a>
+                <a href="#contact" class="hover:opacity-100 transition" data-cz="Kontakt" data-en="Visit Us">Kontakt</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <!-- Clean Pill Language Switcher -->
+                <div class="inline-flex items-center rounded-full p-1 border bg-white border-[#EBE5DC] text-xs">
+                    <button id="btn-lang-cz" onclick="setLanguage('cz')" class="px-2.5 py-1 rounded-full font-medium bg-[#3E2F26] hover:bg-[#523F34] text-white transition cursor-pointer">CZ</button>
+                    <button id="btn-lang-en" onclick="setLanguage('en')" class="px-2.5 py-1 rounded-full font-medium text-[#6E655F] transition cursor-pointer">EN</button>
+                </div>
+
+                <button onclick="openBookingModal('')" class="px-5 py-2.5 rounded-full text-xs font-medium bg-[#3E2F26] hover:bg-[#523F34] text-white transition cursor-pointer" data-cz="Rezervovat stůl" data-en="Reserve a Table">
+                    Rezervovat stůl
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Spacious Split Editorial Hero Section -->
+    <section class="max-w-6xl mx-auto px-6 pt-14 pb-24 lg:py-24">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div class="lg:col-span-6 space-y-8">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium border bg-[#F2ECE1] text-[#5C4938] border-[#E4DACB]">
+                    <span data-cz="Výběrová káva & Řemeslná pekárna • Žižkov" data-en="Specialty Coffee & Artisan Bakery • Žižkov">Výběrová káva & Řemeslná pekárna • Žižkov</span>
+                </div>
+
+                <h1 class="font-editorial text-5xl sm:text-6xl leading-[1.06] font-normal tracking-tight" data-cz="Klidné místo pro skvělou kávu v srdci čtvrti Žižkov" data-en="A Calm Sanctuary for Specialty Coffee in Žižkov">
+                    Klidné místo pro skvělou kávu v srdci čtvrti Žižkov
+                </h1>
+
+                <p class="text-base sm:text-lg text-[#6E655F] leading-relaxed max-w-xl" data-cz="Čerstvě pražená výběrová káva, domácí kváskové pečivo a vzdušný prostor pro vaše ráno i odpolední setkání." data-en="Single-origin specialty coffee, warm sourdough pastries, and a light-filled space designed for slow mornings.">
+                    Čerstvě pražená výběrová káva, domácí kváskové pečivo a vzdušný prostor pro vaše ráno i odpolední setkání.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-3.5 pt-2">
+                    <button onclick="openBookingModal('')" class="px-7 py-4 rounded-full text-sm font-medium bg-[#3E2F26] hover:bg-[#523F34] text-white transition cursor-pointer flex items-center gap-2">
+                        <span data-cz="Rezervovat stůl" data-en="Reserve a Table">Rezervovat stůl</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                    <a href="#services" class="px-7 py-4 rounded-full text-sm font-medium border bg-white hover:bg-[#F5EFE6] text-[#231F1D] border-[#E6DFD5] transition">
+                        <span data-cz="Prohlédnout nabídku" data-en="Explore Menu">Prohlédnout nabídku</span>
+                    </a>
+                </div>
+
+                <div class="pt-6 border-t border-black/5 flex items-center gap-8 text-xs text-[#6E655F]">
+                    <div>
+                        <span class="font-semibold text-sm text-current">4.9 ★</span>
+                        <span class="ml-1">(162+ Google)</span>
+                    </div>
+                    <div>📍 Slavíkova 18, 130 00 Praha 3-Žižkov</div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6">
+                <div class="rounded-[32px] overflow-hidden aspect-[4/3] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.08)] bg-stone-200">
+                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1400&q=85" alt="Kavárna & Pekárna U Jiřího" class="w-full h-full object-cover" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento Value Propositions -->
+    <section id="about" class="py-20 bg-[#F4EFE6]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="max-w-xl mb-14">
+                <p class="text-xs font-medium uppercase tracking-widest text-[#6E655F] mb-3" data-cz="NÁŠ PŘÍSTUP" data-en="OUR PHILOSOPHY">NÁŠ PŘÍSTUP</p>
+                <h2 class="font-editorial text-4xl sm:text-5xl font-normal" data-cz="Důraz na detail, klid a poctivou kvalitu" data-en="Thoughtful craft, calm atmosphere & honest quality">Důraz na detail, klid a poctivou kvalitu</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                
+        <div class="p-8 rounded-3xl border bg-white border-[#EBE5DC] transition-all duration-300 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.06)]">
+            <div class="w-11 h-11 rounded-2xl bg-[#F2ECE1] text-[#3E2F26] flex items-center justify-center mb-6">
+                <i data-lucide="coffee" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-semibold tracking-tight mb-2.5" data-cz="Výběrová pražírna" data-en="Specialty Roast">Výběrová pražírna</h3>
+            <p class="text-[#6E655F] text-sm leading-relaxed" data-cz="Spolupracujeme s lokálními pražírnami pro čistou a vyváženou chuť." data-en="Sourced from independent micro-roasters and brewed with precision.">Spolupracujeme s lokálními pražírnami pro čistou a vyváženou chuť.</p>
+        </div>
+        
+        <div class="p-8 rounded-3xl border bg-white border-[#EBE5DC] transition-all duration-300 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.06)]">
+            <div class="w-11 h-11 rounded-2xl bg-[#F2ECE1] text-[#3E2F26] flex items-center justify-center mb-6">
+                <i data-lucide="croissant" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-semibold tracking-tight mb-2.5" data-cz="Pečeme každé ráno" data-en="Baked Fresh Daily">Pečeme každé ráno</h3>
+            <p class="text-[#6E655F] text-sm leading-relaxed" data-cz="Máslové croissanty, kváskový chléb a sezónní dezerty přímo z pece." data-en="Artisan pastries, sourdough toasts, and seasonal cakes made in-house.">Máslové croissanty, kváskový chléb a sezónní dezerty přímo z pece.</p>
+        </div>
+        
+        <div class="p-8 rounded-3xl border bg-white border-[#EBE5DC] transition-all duration-300 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.06)]">
+            <div class="w-11 h-11 rounded-2xl bg-[#F2ECE1] text-[#3E2F26] flex items-center justify-center mb-6">
+                <i data-lucide="sun" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-semibold tracking-tight mb-2.5" data-cz="Světlý a klidný interiér" data-en="Calm & Minimal Space">Světlý a klidný interiér</h3>
+            <p class="text-[#6E655F] text-sm leading-relaxed" data-cz="Příjemná atmosféra s rychlou Wi-Fi a zahrádkou ve vnitrobloku." data-en="Thoughtfully designed seating, fast Wi-Fi, and a quiet courtyard.">Příjemná atmosféra s rychlou Wi-Fi a zahrádkou ve vnitrobloku.</p>
+        </div>
+        
+            </div>
+        </div>
+    </section>
+
+    <!-- Clean Editorial Services & Pricing -->
+    <section id="services" class="py-24 max-w-4xl mx-auto px-6">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-14 gap-4">
+            <div>
+                <p class="text-xs font-medium uppercase tracking-widest text-[#6E655F] mb-3" data-cz="CENÍK & NABÍDKA" data-en="TRANSPARENT PRICING">CENÍK & NABÍDKA</p>
+                <h2 class="font-editorial text-4xl sm:text-5xl font-normal" data-cz="Vybrané služby a ceník" data-en="Curated Services & Menu">Vybrané služby a ceník</h2>
+            </div>
+            <button onclick="openBookingModal('')" class="px-5 py-2.5 rounded-full text-xs font-medium bg-[#3E2F26] hover:bg-[#523F34] text-white self-start sm:self-auto cursor-pointer" data-cz="Online rezervace" data-en="Book Online">
+                Online rezervace
+            </button>
+        </div>
+        <div class="space-y-3.5">
+            
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#EBE5DC] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Espresso / Double Espresso" data-en="Espresso / Double Shot">Espresso / Double Espresso</h4>
+                <p class="text-sm text-[#6E655F]" data-cz="100% výběrová Arabica s tóny hořké čokolády" data-en="Single-origin specialty espresso">100% výběrová Arabica s tóny hořké čokolády</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#5C4033] whitespace-nowrap">65 / 78 Kč</span>
+                <button onclick="openBookingModal('Espresso / Double Espresso')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#F5EFE6] text-[#231F1D] border-[#E6DFD5] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#EBE5DC] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Cappuccino / Flat White" data-en="Cappuccino / Flat White">Cappuccino / Flat White</h4>
+                <p class="text-sm text-[#6E655F]" data-cz="Plnotučné farmářské mléko nebo ovesná alternativa" data-en="Organic farm milk or Minor Figures oat milk">Plnotučné farmářské mléko nebo ovesná alternativa</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#5C4033] whitespace-nowrap">85 / 95 Kč</span>
+                <button onclick="openBookingModal('Cappuccino / Flat White')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#F5EFE6] text-[#231F1D] border-[#E6DFD5] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#EBE5DC] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Máslový croissant & Káva" data-en="Artisan Croissant & Coffee">Máslový croissant & Káva</h4>
+                <p class="text-sm text-[#6E655F]" data-cz="Čerstvě upečený croissant + káva dle výběru" data-en="Warm flaky pastry paired with your morning coffee">Čerstvě upečený croissant + káva dle výběru</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#5C4033] whitespace-nowrap">145 Kč</span>
+                <button onclick="openBookingModal('Máslový croissant & Káva')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#F5EFE6] text-[#231F1D] border-[#E6DFD5] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#EBE5DC] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Avokádový kváskový chléb" data-en="Sourdough Avocado Toast">Avokádový kváskový chléb</h4>
+                <p class="text-sm text-[#6E655F]" data-cz="Zastřené bio vejce, pražená semínka, mikrobyllinky" data-en="Poached organic egg, toasted seeds & microgreens">Zastřené bio vejce, pražená semínka, mikrobyllinky</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#5C4033] whitespace-nowrap">215 Kč</span>
+                <button onclick="openBookingModal('Avokádový kváskový chléb')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#F5EFE6] text-[#231F1D] border-[#E6DFD5] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#EBE5DC] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Domácí koláč / Dezert dne" data-en="Seasonal Tart of the Day">Domácí koláč / Dezert dne</h4>
+                <p class="text-sm text-[#6E655F]" data-cz="Pečeme denně z čerstvého ovoce a tvarohu" data-en="Prepared daily with fresh seasonal fruits">Pečeme denně z čerstvého ovoce a tvarohu</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#5C4033] whitespace-nowrap">115 Kč</span>
+                <button onclick="openBookingModal('Domácí koláč / Dezert dne')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#F5EFE6] text-[#231F1D] border-[#E6DFD5] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#EBE5DC] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Ceremoniální Matcha Latte" data-en="Ceremonial Organic Matcha">Ceremoniální Matcha Latte</h4>
+                <p class="text-sm text-[#6E655F]" data-cz="Japonská bio matcha šlehaná za tepla nebo na ledu" data-en="Whisked ceremonial grade Uji matcha, hot or iced">Japonská bio matcha šlehaná za tepla nebo na ledu</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#5C4033] whitespace-nowrap">105 Kč</span>
+                <button onclick="openBookingModal('Ceremoniální Matcha Latte')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#F5EFE6] text-[#231F1D] border-[#E6DFD5] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        </div>
+    </section>
+
+    <!-- Minimalist Visual Gallery -->
+    <section class="py-12 max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-6">
+            
+        <div class="overflow-hidden rounded-3xl aspect-[4/3] bg-stone-100">
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80" alt="Kavárna & Pekárna U Jiřího" class="w-full h-full object-cover hover:scale-[1.03] transition duration-700 ease-out" loading="lazy" />
+        </div>
+        
+        <div class="overflow-hidden rounded-3xl aspect-[4/3] bg-stone-100">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80" alt="Kavárna & Pekárna U Jiřího" class="w-full h-full object-cover hover:scale-[1.03] transition duration-700 ease-out" loading="lazy" />
+        </div>
+        
+        <div class="overflow-hidden rounded-3xl aspect-[4/3] bg-stone-100">
+            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80" alt="Kavárna & Pekárna U Jiřího" class="w-full h-full object-cover hover:scale-[1.03] transition duration-700 ease-out" loading="lazy" />
+        </div>
+        
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="reviews" class="py-24 max-w-6xl mx-auto px-6">
+        <div class="max-w-xl mb-12">
+            <p class="text-xs font-medium uppercase tracking-widest text-[#6E655F] mb-3" data-cz="HODNOCENÍ KLIENTŮ" data-en="CLIENT STORIES">HODNOCENÍ KLIENTŮ</p>
+            <h2 class="font-editorial text-4xl font-normal" data-cz="Zkušenosti našich návštěvníků" data-en="Words from Our Community">Zkušenosti našich návštěvníků</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+            
+        <div class="p-8 rounded-3xl border bg-white border-[#EBE5DC] flex flex-col justify-between">
+            <div>
+                <div class="flex items-center gap-1 text-sm mb-4 text-[#5C4033]">
+                    <span>★ ★ ★ ★ ★</span>
+                    <span class="text-xs text-[#6E655F] ml-2 font-normal">Google Review</span>
+                </div>
+                <p class="text-base leading-relaxed mb-6" data-cz="&ldquo;Krásný, čistý prostor a suverénně nejlepší flat white v celé čtvrti.&rdquo;" data-en="&ldquo;Beautiful, calm space and hands-down the best flat white in the neighborhood.&rdquo;">&ldquo;Krásný, čistý prostor a suverénně nejlepší flat white v celé čtvrti.&rdquo;</p>
+            </div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-[#6E655F]">— Markéta Svobodová</div>
+        </div>
+        
+        <div class="p-8 rounded-3xl border bg-white border-[#EBE5DC] flex flex-col justify-between">
+            <div>
+                <div class="flex items-center gap-1 text-sm mb-4 text-[#5C4033]">
+                    <span>★ ★ ★ ★ ★</span>
+                    <span class="text-xs text-[#6E655F] ml-2 font-normal">Google Review</span>
+                </div>
+                <p class="text-base leading-relaxed mb-6" data-cz="&ldquo;Skvělé místo na klidnou snídani v Praze. Pečivo bylo čerstvé a káva perfektní.&rdquo;" data-en="&ldquo;Wonderful spot for a peaceful breakfast in Prague. Pastries and coffee were 10/10.&rdquo;">&ldquo;Skvělé místo na klidnou snídani v Praze. Pečivo bylo čerstvé a káva perfektní.&rdquo;</p>
+            </div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-[#6E655F]">— Liam O'Connor</div>
+        </div>
+        
+        </div>
+    </section>
+
+    <!-- Location & Contact -->
+    <section id="contact" class="py-24 bg-[#F4EFE6]">
+        <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5 space-y-8">
+                <div>
+                    <p class="text-xs font-medium uppercase tracking-widest text-[#6E655F] mb-3" data-cz="KONTAKT & ADRESA" data-en="VISIT US">KONTAKT & ADRESA</p>
+                    <h2 class="font-editorial text-4xl sm:text-5xl font-normal mb-4">Kavárna & Pekárna U Jiřího</h2>
+                    <p class="text-sm text-[#6E655F] leading-relaxed" data-cz="Zastavte se u nás osobně nebo si rezervujte termín online." data-en="Visit us in person or reserve your preferred time slot online.">
+                        Zastavte se u nás osobně nebo si rezervujte termín online.
+                    </p>
+                </div>
+
+                <div class="space-y-5 text-sm">
+                    <div class="p-5 rounded-2xl border bg-white border-[#EBE5DC]">
+                        <div class="text-xs text-[#6E655F] mb-1" data-cz="Adresa" data-en="Address">Adresa</div>
+                        <div class="font-medium">Slavíkova 18, 130 00 Praha 3-Žižkov</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Kavarna+Slavikova+Praha+3" target="_blank" class="text-xs underline mt-2 inline-block text-[#5C4033]" data-cz="Otevřít v Google Maps →" data-en="Open in Google Maps →">Otevřít v Google Maps →</a>
+                    </div>
+
+                    <div class="p-5 rounded-2xl border bg-white border-[#EBE5DC]">
+                        <div class="text-xs text-[#6E655F] mb-1" data-cz="Otevírací doba" data-en="Opening Hours">Otevírací doba</div>
+                        <div class="font-medium">Po-Ne 08:00-19:00</div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl border bg-white border-[#EBE5DC] flex items-center justify-between">
+                        <div>
+                            <div class="text-xs text-[#6E655F] mb-1" data-cz="Telefon & WhatsApp" data-en="Direct Contact">Telefon & WhatsApp</div>
+                            <a href="tel:+420608234511" class="font-medium hover:underline">+420 608 234 511</a>
+                        </div>
+                        <a href="https://wa.me/420608234511" target="_blank" class="px-4 py-2 rounded-full text-xs font-medium bg-[#3E2F26] hover:bg-[#523F34] text-white">
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7">
+                <div class="rounded-3xl overflow-hidden border bg-white border-[#EBE5DC] h-[420px] shadow-sm bg-stone-100">
+                    <iframe width="100%" height="100%" frameborder="0" scrolling="no" src="https://www.openstreetmap.org/export/embed.html?bbox=14.4462%2C50.0752%2C14.4562%2C50.0812&layer=mapnik&marker=50.0782%2C14.4512" title="Kavárna & Pekárna U Jiřího Map"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 px-6 border-t border-black/5 text-xs text-[#6E655F]">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="font-medium text-current">Kavárna & Pekárna U Jiřího — Žižkov, Praha</div>
+            <div data-cz="© 2026 Všechna práva vyhrazena." data-en="© 2026 All rights reserved.">© 2026 Všechna práva vyhrazena.</div>
+        </div>
+    </footer>
+
+    <!-- Minimalist Booking Modal -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden bg-black/30 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white text-[#141413] rounded-3xl max-w-md w-full p-8 shadow-2xl border border-stone-200 relative">
+            <button onclick="closeBookingModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center text-xs cursor-pointer">✕</button>
+            <h3 class="font-editorial text-3xl font-normal mb-1" data-cz="Online rezervace" data-en="Reserve Your Visit">Online rezervace</h3>
+            <p class="text-xs text-stone-500 mb-6">Kavárna & Pekárna U Jiřího • Slavíkova 18, 130 00 Praha 3-Žižkov</p>
+
+            <form onsubmit="submitBooking(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-stone-600 mb-1.5" data-cz="Vybraná služba" data-en="Selected Service">Vybraná služba</label>
+                    <select id="modal-service" class="w-full rounded-xl border border-stone-200 bg-stone-50 px-3.5 py-2.5 text-sm">
+                        <option value="Espresso / Double Espresso (65 / 78 Kč)">Espresso / Double Espresso — 65 / 78 Kč</option><option value="Cappuccino / Flat White (85 / 95 Kč)">Cappuccino / Flat White — 85 / 95 Kč</option><option value="Máslový croissant & Káva (145 Kč)">Máslový croissant & Káva — 145 Kč</option><option value="Avokádový kváskový chléb (215 Kč)">Avokádový kváskový chléb — 215 Kč</option><option value="Domácí koláč / Dezert dne (115 Kč)">Domácí koláč / Dezert dne — 115 Kč</option><option value="Ceremoniální Matcha Latte (105 Kč)">Ceremoniální Matcha Latte — 105 Kč</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-medium text-stone-600 mb-1.5" data-cz="Datum" data-en="Date">Datum</label>
+                        <input type="date" id="modal-date" required class="w-full rounded-xl border border-stone-200 bg-stone-50 px-3 py-2.5 text-sm" />
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-stone-600 mb-1.5" data-cz="Čas" data-en="Time">Čas</label>
+                        <input type="time" id="modal-time" value="14:00" required class="w-full rounded-xl border border-stone-200 bg-stone-50 px-3 py-2.5 text-sm" />
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-stone-600 mb-1.5" data-cz="Jméno a telefon" data-en="Your Name & Phone">Jméno a telefon</label>
+                    <input type="text" id="modal-name" placeholder="Jan Novák, +420..." required class="w-full rounded-xl border border-stone-200 bg-stone-50 px-3.5 py-2.5 text-sm" />
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-full font-medium text-sm bg-[#3E2F26] hover:bg-[#523F34] text-white transition cursor-pointer mt-2" data-cz="Potvrdit rezervaci" data-en="Confirm Request">
+                    Potvrdit rezervaci
+                </button>
+            </form>
+            <div id="booking-success" class="hidden mt-4 p-4 rounded-2xl bg-stone-100 text-stone-800 text-xs font-medium text-center">
+                ✓ <span data-cz="Děkujeme! Vaše rezervace byla přijata." data-en="Thank you! Your request has been received.">Děkujeme! Vaše rezervace byla přijata.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+                el.innerHTML = el.getAttribute('data-' + lang);
+            });
+            const btnCz = document.getElementById('btn-lang-cz');
+            const btnEn = document.getElementById('btn-lang-en');
+            if (lang === 'cz') {
+                btnCz.className = 'px-2.5 py-1 rounded-full font-medium bg-[#3E2F26] hover:bg-[#523F34] text-white transition cursor-pointer';
+                btnEn.className = 'px-2.5 py-1 rounded-full font-medium text-[#6E655F] transition cursor-pointer';
+            } else {
+                btnEn.className = 'px-2.5 py-1 rounded-full font-medium bg-[#3E2F26] hover:bg-[#523F34] text-white transition cursor-pointer';
+                btnCz.className = 'px-2.5 py-1 rounded-full font-medium text-[#6E655F] transition cursor-pointer';
+            }
+        }
+        function openBookingModal() {
+            document.getElementById('booking-modal').classList.remove('hidden');
+            document.getElementById('booking-success').classList.add('hidden');
+            document.getElementById('modal-date').value = new Date().toISOString().split('T')[0];
+        }
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+        }
+        function submitBooking(e) {
+            e.preventDefault();
+            document.getElementById('booking-success').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quartier — Prague Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #F7F6F2;
+            color: #141413;
+            letter-spacing: -0.011em;
+        }
+        .font-editorial {
+            font-family: 'Instrument Serif', Georgia, serif;
+            letter-spacing: -0.02em;
+        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #D8D5CD; border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #B8B4A9; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-[#141413] selection:text-white">
+
+    <!-- Minimal Top Navigation Bar -->
+    <header class="sticky top-0 z-30 h-20 bg-[#F7F6F2]/85 backdrop-blur-xl border-b border-[#E6E4DD] px-6 lg:px-12 flex items-center justify-between">
+        <!-- Brand -->
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-[#141413] text-white flex items-center justify-center font-editorial text-lg">
+                Q
+            </div>
+            <span class="font-medium text-sm tracking-tight text-[#141413]">Quartier Prague</span>
+            <span class="text-xs text-[#8A8780] hidden sm:inline">/ Yerel İşletme Stüdyosu</span>
+        </div>
+
+        <!-- Centered Segmented View Switcher (Calm 3-Step Flow) -->
+        <nav class="flex items-center bg-[#EFECE6] p-1 rounded-full border border-[#E2DFD7]">
+            <button id="tab-discover" onclick="switchMainView('discover')" class="px-5 py-1.5 rounded-full text-xs font-medium bg-white text-[#141413] shadow-sm transition cursor-pointer">
+                1. İşletmeler
+            </button>
+            <button id="tab-studio" onclick="switchMainView('studio')" class="px-5 py-1.5 rounded-full text-xs font-medium text-[#686662] hover:text-[#141413] transition cursor-pointer">
+                2. Tasarım Stüdyosu
+            </button>
+            <button id="tab-pitch" onclick="switchMainView('pitch')" class="px-5 py-1.5 rounded-full text-xs font-medium text-[#686662] hover:text-[#141413] transition cursor-pointer">
+                3. Satış & Teklif
+            </button>
+        </nav>
+
+        <!-- Minimal Right Actions -->
+        <div class="flex items-center gap-2.5">
+            <button onclick="openCustomLeadModal()" class="px-4 py-2 rounded-full bg-white hover:bg-[#EFECE6] border border-[#E2DFD7] text-xs font-medium text-[#141413] transition cursor-pointer">
+                + İşletme Ekle
+            </button>
+            <button onclick="openSettingsModal()" class="w-9 h-9 rounded-full bg-white hover:bg-[#EFECE6] border border-[#E2DFD7] flex items-center justify-center text-[#686662] hover:text-[#141413] transition cursor-pointer" title="API Ayarları">
+                <i data-lucide="sliders-horizontal" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- =================================================================== -->
+    <!-- VIEW 1: DISCOVER & LEADS (Spacious, Editorial, Single-Column Focus) -->
+    <!-- =================================================================== -->
+    <main id="view-discover" class="flex-1 max-w-5xl w-full mx-auto px-6 py-12 space-y-10">
+
+        <!-- Hero Header & Subtle Metrics -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+                <p class="text-xs uppercase tracking-widest text-[#686662] mb-2">PRAG HARİTA KEŞFİ</p>
+                <h1 class="font-editorial text-4xl sm:text-5xl font-normal text-[#141413]">Web sitesi olmayan işletmeler</h1>
+            </div>
+            <div class="flex items-center gap-6 text-xs text-[#686662] border-t md:border-t-0 pt-4 md:pt-0 border-[#E6E4DD]">
+                <div>
+                    <span class="block text-[11px] text-[#8A8780]">Aday İşletme</span>
+                    <span id="stat-noweb" class="text-lg font-semibold text-[#141413]">0</span>
+                </div>
+                <div class="h-7 w-px bg-[#E6E4DD]"></div>
+                <div>
+                    <span class="block text-[11px] text-[#8A8780]">Hazır Tasarım</span>
+                    <span id="stat-generated" class="text-lg font-semibold text-[#141413]">0</span>
+                </div>
+                <div class="h-7 w-px bg-[#E6E4DD]"></div>
+                <div>
+                    <span class="block text-[11px] text-[#8A8780]">Tahmini Değer</span>
+                    <span id="stat-revenue" class="text-lg font-semibold text-[#1F4B38]">0 Kč</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clean Unified Search & Scan Bar -->
+        <div class="bg-white rounded-3xl p-4 sm:p-5 border border-[#E6E4DD] shadow-[0_4px_24px_-6px_rgba(20,20,19,0.04)] space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-12 gap-3">
+                <div class="sm:col-span-4">
+                    <label class="block text-[11px] text-[#8A8780] mb-1 ml-1">Bölge</label>
+                    <select id="scrape-district" class="w-full rounded-2xl bg-[#F7F6F2] border border-[#E6E4DD] px-4 py-3 text-xs font-medium text-[#141413] focus:outline-none focus:border-[#141413]">
+                        <option value="praha_2">Praha 2 — Vinohrady</option>
+                        <option value="praha_1">Praha 1 — Staré Město</option>
+                        <option value="praha_3">Praha 3 — Žižkov</option>
+                        <option value="praha_7">Praha 7 — Holešovice & Letná</option>
+                        <option value="praha_8">Praha 8 — Karlín</option>
+                        <option value="praha_5">Praha 5 — Smíchov</option>
+                        <option value="praha_6">Praha 6 — Dejvice</option>
+                        <option value="praha_10">Praha 10 — Vršovice</option>
+                    </select>
+                </div>
+                <div class="sm:col-span-5">
+                    <label class="block text-[11px] text-[#8A8780] mb-1 ml-1">Sektör veya Anahtar Kelime</label>
+                    <input id="scrape-query" type="text" placeholder="Örn: berber, kafe, masaj, oto servis, çiçekçi..." class="w-full rounded-2xl bg-[#F7F6F2] border border-[#E6E4DD] px-4 py-3 text-xs text-[#141413] placeholder-[#8A8780] focus:outline-none focus:border-[#141413]" />
+                </div>
+                <div class="sm:col-span-3 flex items-end">
+                    <button id="btn-scrape" onclick="runPragueScraper()" class="w-full py-3 px-5 rounded-2xl bg-[#141413] hover:bg-[#2C2C2A] text-white font-medium text-xs flex items-center justify-center gap-2 transition cursor-pointer">
+                        <i data-lucide="search" class="w-3.5 h-3.5"></i>
+                        <span>Bölgeyi Tara</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Subtle Quick Sector Tags -->
+            <div class="flex items-center justify-between flex-wrap gap-3 pt-2 border-t border-[#F0EEE8] text-xs">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                    <span class="text-[#8A8780] text-[11px] mr-1">Önerilen:</span>
+                    <button onclick="quickSector('berber')" class="px-3 py-1 rounded-full bg-[#F7F6F2] hover:bg-[#EFECE6] text-[#4A4945] text-[11px] transition cursor-pointer">Kuaför & Barber</button>
+                    <button onclick="quickSector('kafe')" class="px-3 py-1 rounded-full bg-[#F7F6F2] hover:bg-[#EFECE6] text-[#4A4945] text-[11px] transition cursor-pointer">Kafe & Fırın</button>
+                    <button onclick="quickSector('masaj')" class="px-3 py-1 rounded-full bg-[#F7F6F2] hover:bg-[#EFECE6] text-[#4A4945] text-[11px] transition cursor-pointer">Masaj & Spa</button>
+                    <button onclick="quickSector('oto tamir')" class="px-3 py-1 rounded-full bg-[#F7F6F2] hover:bg-[#EFECE6] text-[#4A4945] text-[11px] transition cursor-pointer">Oto Servis</button>
+                    <button onclick="quickSector('dişçi')" class="px-3 py-1 rounded-full bg-[#F7F6F2] hover:bg-[#EFECE6] text-[#4A4945] text-[11px] transition cursor-pointer">Klinik</button>
+                    <button onclick="quickSector('çiçekçi')" class="px-3 py-1 rounded-full bg-[#F7F6F2] hover:bg-[#EFECE6] text-[#4A4945] text-[11px] transition cursor-pointer">Butik & Çiçekçi</button>
+                </div>
+
+                <!-- Minimal Status Filter -->
+                <div class="flex items-center gap-2">
+                    <button id="flt-NO_WEBSITE" onclick="setWebsiteFilter('NO_WEBSITE')" class="px-3 py-1 rounded-full text-[11px] font-medium bg-[#141413] text-white transition cursor-pointer">
+                        Web Sitesi Olmayanlar
+                    </button>
+                    <button id="flt-ALL" onclick="setWebsiteFilter('ALL')" class="px-3 py-1 rounded-full text-[11px] font-medium text-[#686662] hover:text-[#141413] transition cursor-pointer">
+                        Tümü
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subtle Status Notification -->
+        <div id="scrape-toast" class="hidden px-5 py-3.5 rounded-2xl bg-[#E6F0EA] border border-[#CFE2D7] text-[#1F4B38] text-xs font-medium">
+            <span id="scrape-toast-text">Harita taranıyor...</span>
+        </div>
+
+        <!-- Clean, Breathable Business List -->
+        <div id="leads-container" class="space-y-3">
+            <!-- Populated by JS -->
+        </div>
+    </main>
+
+    <!-- =================================================================== -->
+    <!-- VIEW 2: WEBSITE STUDIO (Distraction-Free Full Canvas Preview)       -->
+    <!-- =================================================================== -->
+    <main id="view-studio" class="hidden flex-1 flex flex-col overflow-hidden">
+        <!-- Minimal Floating Sub-Bar -->
+        <div class="bg-white border-b border-[#E6E4DD] px-6 lg:px-12 py-3.5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <button onclick="switchMainView('discover')" class="px-3 py-1.5 rounded-full bg-[#F7F6F2] hover:bg-[#EFECE6] text-xs font-medium text-[#4A4945] flex items-center gap-1.5 transition cursor-pointer">
+                    <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                    <span>Listeye Dön</span>
+                </button>
+                <div class="h-4 w-px bg-[#E6E4DD]"></div>
+                <div>
+                    <span id="studio-title" class="font-semibold text-sm text-[#141413]">İşletme Seçilmedi</span>
+                    <span id="studio-subtitle" class="text-xs text-[#8A8780] ml-2"></span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <!-- Editorial Color Theme Selector -->
+                <div class="flex items-center gap-2">
+                    <span class="text-xs text-[#8A8780] hidden sm:inline">Renk Paleti:</span>
+                    <select id="studio-theme" onchange="regenerateWithTheme()" class="rounded-full bg-[#F7F6F2] border border-[#E2DFD7] px-3.5 py-1.5 text-xs font-medium text-[#141413] focus:outline-none">
+                        <option value="">Otomatik Sektör Paleti</option>
+                        <option value="nordic">Nordic Alabaster (Yalın Keten & Mürekkep)</option>
+                        <option value="sage">Botanical Sage (Okaliptüs & Fildişi)</option>
+                        <option value="sand">Warm Cashmere (Kaşmir Kumu & Toprak)</option>
+                        <option value="ocean">Mineral Slate (Buz Mavisi & İndigo)</option>
+                        <option value="pearl">Soft Pearl (İnci & Pudra)</option>
+                    </select>
+                </div>
+
+                <!-- Device Switcher -->
+                <div class="flex items-center bg-[#F7F6F2] rounded-full p-0.5 border border-[#E2DFD7]">
+                    <button id="btn-view-desktop" onclick="setPreviewMode('desktop')" class="px-3 py-1 rounded-full text-xs font-medium bg-white text-[#141413] shadow-sm cursor-pointer">Masaüstü</button>
+                    <button id="btn-view-mobile" onclick="setPreviewMode('mobile')" class="px-3 py-1 rounded-full text-xs font-medium text-[#686662] cursor-pointer">Mobil</button>
+                </div>
+
+                <a id="btn-open-tab" href="#" target="_blank" class="px-3.5 py-1.5 rounded-full bg-[#F7F6F2] hover:bg-[#EFECE6] border border-[#E2DFD7] text-xs font-medium text-[#141413] flex items-center gap-1.5 transition">
+                    <span>Yeni Sekmede Aç</span>
+                    <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                </a>
+
+                <button onclick="switchMainView('pitch')" class="px-4 py-1.5 rounded-full bg-[#141413] hover:bg-[#2C2C2A] text-white text-xs font-medium flex items-center gap-1.5 transition cursor-pointer">
+                    <span>Satış Metnine Geç</span>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Clean Framed Canvas with Breathing Room -->
+        <div class="flex-1 p-6 lg:p-10 flex items-center justify-center overflow-hidden bg-[#F0EEE8]">
+            <div id="iframe-wrapper" class="w-full h-full max-w-6xl transition-all duration-300 rounded-3xl overflow-hidden border border-[#DEDAD0] shadow-[0_20px_60px_-15px_rgba(20,20,19,0.08)] bg-white">
+                <iframe id="site-iframe" src="about:blank" class="w-full h-full border-0"></iframe>
+            </div>
+        </div>
+    </main>
+
+    <!-- =================================================================== -->
+    <!-- VIEW 3: OUTREACH & PITCH (Calm Two-Column Layout)                   -->
+    <!-- =================================================================== -->
+    <main id="view-pitch" class="hidden flex-1 max-w-5xl w-full mx-auto px-6 py-12 space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E6E4DD] pb-6">
+            <div>
+                <p class="text-xs uppercase tracking-widest text-[#686662] mb-1">SATIŞ & İLETİŞİM KİTİ</p>
+                <h2 id="pitch-biz-name" class="font-editorial text-4xl font-normal text-[#141413]">İşletme Teklifi</h2>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="px-4 py-2 rounded-full bg-[#E6F0EA] text-[#1F4B38] text-xs font-medium" id="pitch-price">
+                    Önerilen: 8 900 Kč (~355 €)
+                </span>
+                <button onclick="switchMainView('studio')" class="px-4 py-2 rounded-full bg-white border border-[#E2DFD7] text-xs font-medium text-[#141413] cursor-pointer">
+                    ← Tasarıma Dön
+                </button>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Czech Pitch Card -->
+            <div class="bg-white rounded-3xl p-7 border border-[#E6E4DD] space-y-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <span class="text-xs font-semibold text-[#141413]">🇨🇿 Çekçe Teklif Mesajı</span>
+                        <p class="text-[11px] text-[#8A8780]">WhatsApp, Instagram veya E-posta için</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="copyText('pitch-cz')" class="px-3 py-1.5 rounded-full bg-[#F7F6F2] hover:bg-[#EFECE6] text-xs font-medium text-[#141413] cursor-pointer">Kopyala</button>
+                        <a id="btn-wa-cz" href="#" target="_blank" class="px-3.5 py-1.5 rounded-full bg-[#1F4B38] hover:bg-[#275E46] text-xs font-medium text-white">WhatsApp</a>
+                    </div>
+                </div>
+                <textarea id="pitch-cz" rows="8" class="w-full rounded-2xl bg-[#F7F6F2] border border-[#E6E4DD] p-4 text-xs leading-relaxed text-[#141413] focus:outline-none"></textarea>
+            </div>
+
+            <!-- English Pitch Card -->
+            <div class="bg-white rounded-3xl p-7 border border-[#E6E4DD] space-y-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <span class="text-xs font-semibold text-[#141413]">🇬🇧 İngilizce Teklif Mesajı</span>
+                        <p class="text-[11px] text-[#8A8780]">Expat & yabancı işletme sahipleri için</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="copyText('pitch-en')" class="px-3 py-1.5 rounded-full bg-[#F7F6F2] hover:bg-[#EFECE6] text-xs font-medium text-[#141413] cursor-pointer">Kopyala</button>
+                        <a id="btn-wa-en" href="#" target="_blank" class="px-3.5 py-1.5 rounded-full bg-[#1F4B38] hover:bg-[#275E46] text-xs font-medium text-white">WhatsApp</a>
+                    </div>
+                </div>
+                <textarea id="pitch-en" rows="8" class="w-full rounded-2xl bg-[#F7F6F2] border border-[#E6E4DD] p-4 text-xs leading-relaxed text-[#141413] focus:outline-none"></textarea>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-7 border border-[#E6E4DD] text-xs text-[#4A4945] leading-relaxed" id="pitch-walkin">
+        </div>
+    </main>
+
+    <!-- Custom Business Modal (Minimal Light Style) -->
+    <div id="modal-custom" class="fixed inset-0 z-50 hidden bg-black/25 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white border border-[#E6E4DD] rounded-3xl max-w-md w-full p-8 shadow-xl space-y-5">
+            <div class="flex items-center justify-between">
+                <h3 class="font-editorial text-3xl text-[#141413]">Yeni İşletme Ekle</h3>
+                <button onclick="closeCustomLeadModal()" class="w-8 h-8 rounded-full bg-[#F7F6F2] text-xs cursor-pointer">✕</button>
+            </div>
+            <div class="space-y-3.5 text-xs">
+                <div>
+                    <label class="block text-[#686662] mb-1">İşletme Adı</label>
+                    <input id="cust-name" type="text" placeholder="Örn: Kavárna Letná veya Studio Korunní" class="w-full rounded-xl bg-[#F7F6F2] border border-[#E6E4DD] px-3.5 py-2.5 text-[#141413]" />
+                </div>
+                <div>
+                    <label class="block text-[#686662] mb-1">Sektör</label>
+                    <input id="cust-category" type="text" placeholder="Örn: Kafe, Berber, Masaj, Oto Servis, Klinik..." class="w-full rounded-xl bg-[#F7F6F2] border border-[#E6E4DD] px-3.5 py-2.5 text-[#141413]" />
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[#686662] mb-1">Bölge</label>
+                        <select id="cust-district" class="w-full rounded-xl bg-[#F7F6F2] border border-[#E6E4DD] px-3 py-2.5 text-[#141413]">
+                            <option value="praha_2">Praha 2 (Vinohrady)</option>
+                            <option value="praha_1">Praha 1 (Staré Město)</option>
+                            <option value="praha_3">Praha 3 (Žižkov)</option>
+                            <option value="praha_7">Praha 7 (Holešovice)</option>
+                            <option value="praha_8">Praha 8 (Karlín)</option>
+                            <option value="praha_5">Praha 5 (Smíchov)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[#686662] mb-1">Telefon</label>
+                        <input id="cust-phone" type="text" placeholder="+420 777 123 456" class="w-full rounded-xl bg-[#F7F6F2] border border-[#E6E4DD] px-3.5 py-2.5 text-[#141413]" />
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[#686662] mb-1">Sokak Adresi</label>
+                    <input id="cust-address" type="text" placeholder="Korunní 48, Praha 2" class="w-full rounded-xl bg-[#F7F6F2] border border-[#E6E4DD] px-3.5 py-2.5 text-[#141413]" />
+                </div>
+                <button onclick="submitCustomLead()" class="w-full py-3 rounded-full bg-[#141413] hover:bg-[#2C2C2A] text-white font-medium text-xs cursor-pointer mt-2">
+                    Ekle ve Tasarımı Oluştur
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="modal-settings" class="fixed inset-0 z-50 hidden bg-black/25 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white border border-[#E6E4DD] rounded-3xl max-w-md w-full p-8 shadow-xl space-y-5">
+            <div class="flex items-center justify-between">
+                <h3 class="font-editorial text-3xl text-[#141413]">API Ayarları</h3>
+                <button onclick="closeSettingsModal()" class="w-8 h-8 rounded-full bg-[#F7F6F2] text-xs cursor-pointer">✕</button>
+            </div>
+            <p class="text-xs text-[#686662] leading-relaxed">
+                Sistem anahtarsız olarak ücretsiz çalışır. İsterseniz özel AI metin üretimi için Gemini veya Google Places anahtarı ekleyebilirsiniz.
+            </p>
+            <div class="space-y-3.5 text-xs">
+                <div>
+                    <label class="block text-[#686662] mb-1">Gemini API Key (Opsiyonel)</label>
+                    <input id="set-gemini" type="password" placeholder="AIzaSy..." class="w-full rounded-xl bg-[#F7F6F2] border border-[#E6E4DD] px-3.5 py-2.5 text-[#141413]" />
+                </div>
+                <div>
+                    <label class="block text-[#686662] mb-1">Google Places API Key (Opsiyonel)</label>
+                    <input id="set-gplaces" type="password" placeholder="AIzaSy..." class="w-full rounded-xl bg-[#F7F6F2] border border-[#E6E4DD] px-3.5 py-2.5 text-[#141413]" />
+                </div>
+                <button onclick="saveApiSettings()" class="w-full py-3 rounded-full bg-[#141413] hover:bg-[#2C2C2A] text-white font-medium text-xs cursor-pointer">
+                    Kaydet
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentWebsiteFilter = 'NO_WEBSITE';
+        let activeLead = null;
+        let allLeads = [];
+
+        async function initApp() {
+            lucide.createIcons();
+            await loadLeads();
+            if (allLeads.length > 0) {
+                activeLead = allLeads[0];
+                await prepareLeadInBackground(activeLead.id);
+            }
+        }
+
+        function switchMainView(view) {
+            ['discover', 'studio', 'pitch'].forEach(v => {
+                document.getElementById('view-' + v).classList.add('hidden');
+                const tab = document.getElementById('tab-' + v);
+                tab.className = 'px-5 py-1.5 rounded-full text-xs font-medium text-[#686662] hover:text-[#141413] transition cursor-pointer';
+            });
+            document.getElementById('view-' + view).classList.remove('hidden');
+            document.getElementById('tab-' + view).className = 'px-5 py-1.5 rounded-full text-xs font-medium bg-white text-[#141413] shadow-sm transition cursor-pointer';
+            lucide.createIcons();
+        }
+
+        function setWebsiteFilter(flt) {
+            currentWebsiteFilter = flt;
+            document.getElementById('flt-NO_WEBSITE').className = flt === 'NO_WEBSITE'
+                ? 'px-3 py-1 rounded-full text-[11px] font-medium bg-[#141413] text-white transition cursor-pointer'
+                : 'px-3 py-1 rounded-full text-[11px] font-medium text-[#686662] hover:text-[#141413] transition cursor-pointer';
+            document.getElementById('flt-ALL').className = flt === 'ALL'
+                ? 'px-3 py-1 rounded-full text-[11px] font-medium bg-[#141413] text-white transition cursor-pointer'
+                : 'px-3 py-1 rounded-full text-[11px] font-medium text-[#686662] hover:text-[#141413] transition cursor-pointer';
+            loadLeads();
+        }
+
+        async function loadLeads() {
+            const res = await fetch(`/api/leads?website_filter=${currentWebsiteFilter}`);
+            const data = await res.json();
+            allLeads = data.leads || [];
+            const stats = data.stats || {};
+
+            document.getElementById('stat-noweb').textContent = stats.no_website || 0;
+            document.getElementById('stat-generated').textContent = stats.sites_generated || 0;
+            const potentialCzk = (stats.no_website || 0) * 8900;
+            document.getElementById('stat-revenue').textContent = potentialCzk.toLocaleString('cs-CZ') + ' Kč';
+
+            renderLeadsList();
+        }
+
+        function renderLeadsList() {
+            const container = document.getElementById('leads-container');
+            if (allLeads.length === 0) {
+                container.innerHTML = `
+                    <div class="bg-white rounded-3xl p-12 text-center border border-[#E6E4DD] text-xs text-[#686662]">
+                        Bu filtrede işletme bulunamadı. Yukarıdan "Bölgeyi Tara" butonuna tıklayarak yeni işletmeleri keşfedin.
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = allLeads.map(lead => {
+                let statusPill = '';
+                if (lead.website_status === 'NO_WEBSITE') {
+                    statusPill = `<span class="px-3 py-1 rounded-full text-[11px] font-medium bg-[#E6F0EA] text-[#1F4B38]">${lead.website_badge || 'Doğrulandı: Web Sitesi Yok ✓'}</span>`;
+                } else if (lead.website_status === 'SOCIAL_ONLY' || lead.website_status === 'WEAK_WEBSITE') {
+                    statusPill = `<span class="px-3 py-1 rounded-full text-[11px] font-medium bg-[#F2ECE1] text-[#5C4938]">${lead.website_badge}</span>`;
+                } else {
+                    statusPill = `<span class="px-3 py-1 rounded-full text-[11px] font-medium bg-[#EFECE6] text-[#686662]">${lead.website_badge || 'Web Sitesi Var'}</span>`;
+                }
+
+                const googleVerifyUrl = `https://www.google.com/search?q=${encodeURIComponent(lead.name + ' ' + lead.address)}`;
+                const existingLinkBtn = lead.website
+                    ? `<a href="${lead.website}" target="_blank" class="px-3 py-1.5 rounded-full bg-[#F7F6F2] hover:bg-[#EFECE6] text-[11px] font-medium text-[#5C4938] transition">Mevcut Link ↗</a>`
+                    : '';
+
+                return `
+                <div class="bg-white rounded-3xl p-6 border border-[#E6E4DD] hover:border-[#C5C1B7] transition flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+                    <div class="space-y-1.5">
+                        <div class="flex items-center gap-3 flex-wrap">
+                            <h3 class="font-semibold text-base text-[#141413]">${lead.name}</h3>
+                            ${statusPill}
+                            <span class="text-xs text-[#686662]">★ ${lead.rating}</span>
+                        </div>
+                        <div class="text-xs text-[#686662] flex items-center gap-2 flex-wrap">
+                            <span class="font-medium text-[#141413]">${lead.category_label_tr}</span>
+                            <span>·</span>
+                            <span>${lead.address}</span>
+                            ${lead.phone ? `<span>·</span><span class="font-medium text-[#141413]">${lead.phone}</span>` : ''}
+                        </div>
+                        <div class="text-[11px] text-[#8A8780]">
+                            ${lead.opportunity_reason || ''}
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2 shrink-0 flex-wrap">
+                        ${existingLinkBtn}
+                        <a href="${googleVerifyUrl}" target="_blank" class="px-3.5 py-2 rounded-full bg-[#F7F6F2] hover:bg-[#EFECE6] text-xs font-medium text-[#4A4945] transition" title="Google'da canlı kontrol et">
+                            Google'da Doğrula ↗
+                        </a>
+                        <a href="${lead.google_maps_url}" target="_blank" class="px-3.5 py-2 rounded-full bg-[#F7F6F2] hover:bg-[#EFECE6] text-xs font-medium text-[#4A4945] transition">
+                            Firmy.cz / Harita ↗
+                        </a>
+                        <button onclick="openLeadInStudio(${lead.id})" class="px-5 py-2.5 rounded-full bg-[#141413] hover:bg-[#2C2C2A] text-white text-xs font-medium transition cursor-pointer flex items-center gap-1.5">
+                            <span>${lead.site_generated ? 'Tasarımı Gör' : 'Siteyi Oluştur'}</span>
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function quickSector(sector) {
+            document.getElementById('scrape-query').value = sector;
+            runPragueScraper();
+        }
+
+        async function runPragueScraper() {
+            const district = document.getElementById('scrape-district').value;
+            const query = document.getElementById('scrape-query').value;
+            const btn = document.getElementById('btn-scrape');
+            const toast = document.getElementById('scrape-toast');
+            const toastText = document.getElementById('scrape-toast-text');
+
+            btn.disabled = true;
+            btn.innerHTML = '<span>Taranıyor...</span>';
+            toast.classList.remove('hidden');
+            toastText.textContent = `Prag (${district.replace('_', ' ').toUpperCase()}) bölgesindeki işletmeler taranıyor...`;
+
+            try {
+                const res = await fetch('/api/scrape', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ district, query, only_no_website: false })
+                });
+                const data = await res.json();
+                if (data.error) {
+                    toastText.textContent = `Hata: ${data.error}`;
+                } else {
+                    toastText.textContent = `Tarama tamamlandı: ${data.scraped_total} işletme incelendi, ${data.added_new} yeni aday eklendi.`;
+                    await loadLeads();
+                }
+            } catch (err) {
+                toastText.textContent = `Bağlantı hatası: ${err.message}`;
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<span>Bölgeyi Tara</span>';
+                setTimeout(() => toast.classList.add('hidden'), 5000);
+            }
+        }
+
+        async function prepareLeadInBackground(leadId, themeOverride = '') {
+            const res = await fetch(`/api/leads/${leadId}/generate`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ theme: themeOverride })
+            });
+            const data = await res.json();
+            if (!data.ok) return;
+
+            activeLead = data.lead;
+            const pitches = data.pitches;
+
+            document.getElementById('studio-title').textContent = activeLead.name;
+            document.getElementById('studio-subtitle').textContent = `${activeLead.category_label_tr} · ${activeLead.district}`;
+
+            document.getElementById('site-iframe').src = `${activeLead.site_url}?t=${Date.now()}`;
+            document.getElementById('btn-open-tab').href = activeLead.site_url;
+
+            document.getElementById('pitch-biz-name').textContent = activeLead.name;
+            document.getElementById('pitch-price').textContent = `Önerilen: ${pitches.recommended_price_czk} (${pitches.recommended_price_eur})`;
+            document.getElementById('pitch-cz').value = pitches.whatsapp_cz;
+            document.getElementById('pitch-en').value = pitches.whatsapp_en;
+            document.getElementById('pitch-walkin').innerHTML = pitches.walkin_tips_tr.replace(/\n/g, '<br/>');
+
+            const cleanPhone = (activeLead.phone || '').replace(/[^\d]/g, '');
+            const waPhone = cleanPhone.startsWith('420') ? cleanPhone : (cleanPhone ? '420' + cleanPhone : '');
+            document.getElementById('btn-wa-cz').href = `https://wa.me/${waPhone}?text=${encodeURIComponent(pitches.whatsapp_cz)}`;
+            document.getElementById('btn-wa-en').href = `https://wa.me/${waPhone}?text=${encodeURIComponent(pitches.whatsapp_en)}`;
+        }
+
+        async function openLeadInStudio(leadId) {
+            await prepareLeadInBackground(leadId);
+            await loadLeads();
+            switchMainView('studio');
+        }
+
+        function regenerateWithTheme() {
+            if (!activeLead) return;
+            const theme = document.getElementById('studio-theme').value;
+            prepareLeadInBackground(activeLead.id, theme);
+        }
+
+        function setPreviewMode(mode) {
+            const wrapper = document.getElementById('iframe-wrapper');
+            const btnDesk = document.getElementById('btn-view-desktop');
+            const btnMob = document.getElementById('btn-view-mobile');
+
+            if (mode === 'mobile') {
+                wrapper.className = 'w-[390px] h-[94%] transition-all duration-300 rounded-[40px] overflow-hidden border-[8px] border-[#141413] shadow-2xl bg-white';
+                btnMob.className = 'px-3 py-1 rounded-full text-xs font-medium bg-white text-[#141413] shadow-sm cursor-pointer';
+                btnDesk.className = 'px-3 py-1 rounded-full text-xs font-medium text-[#686662] cursor-pointer';
+            } else {
+                wrapper.className = 'w-full h-full max-w-6xl transition-all duration-300 rounded-3xl overflow-hidden border border-[#DEDAD0] shadow-[0_20px_60px_-15px_rgba(20,20,19,0.08)] bg-white';
+                btnDesk.className = 'px-3 py-1 rounded-full text-xs font-medium bg-white text-[#141413] shadow-sm cursor-pointer';
+                btnMob.className = 'px-3 py-1 rounded-full text-xs font-medium text-[#686662] cursor-pointer';
+            }
+        }
+
+        function copyText(elementId) {
+            const el = document.getElementById(elementId);
+            el.select();
+            navigator.clipboard.writeText(el.value);
+        }
+
+        function openCustomLeadModal() { document.getElementById('modal-custom').classList.remove('hidden'); }
+        function closeCustomLeadModal() { document.getElementById('modal-custom').classList.add('hidden'); }
+
+        async function submitCustomLead() {
+            const name = document.getElementById('cust-name').value.trim();
+            const category = document.getElementById('cust-category').value.trim();
+            const district = document.getElementById('cust-district').value;
+            const phone = document.getElementById('cust-phone').value.trim();
+            const address = document.getElementById('cust-address').value.trim();
+            if (!name) return;
+
+            const res = await fetch('/api/leads/custom', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, category, district, phone, address })
+            });
+            const data = await res.json();
+            if (data.ok && data.lead) {
+                closeCustomLeadModal();
+                await loadLeads();
+                openLeadInStudio(data.lead.id);
+            }
+        }
+
+        function openSettingsModal() { document.getElementById('modal-settings').classList.remove('hidden'); }
+        function closeSettingsModal() { document.getElementById('modal-settings').classList.add('hidden'); }
+
+        async function saveApiSettings() {
+            const gemini = document.getElementById('set-gemini').value.trim();
+            const gplaces = document.getElementById('set-gplaces').value.trim();
+            await fetch('/api/config', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ gemini_api_key: gemini, google_places_api_key: gplaces })
+            });
+            closeSettingsModal();
+        }
+
+        window.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>

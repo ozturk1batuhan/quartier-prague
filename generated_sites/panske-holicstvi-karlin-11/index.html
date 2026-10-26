@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="cs" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pánské Holičství Karlín — Karlín, Praha</title>
+    <meta name="description" content="Klidné prostředí bez spěchu, detailní konzultace a přírodní vlasová kosmetika. Mluvíme česky i anglicky." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: -0.011em; }
+        .font-editorial { font-family: 'Instrument Serif', Georgia, serif; letter-spacing: -0.02em; }
+    </style>
+</head>
+<body class="bg-[#FAF9F5] text-[#141413] antialiased">
+
+    <!-- Floating Minimalist Navigation -->
+    <header class="sticky top-0 z-40 backdrop-blur-xl bg-[#FAF9F5]/85 border-[#E6E4DD] border-b">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
+            <a href="#" class="text-lg font-semibold tracking-tight flex items-center gap-2.5">
+                <span>Pánské Holičství Karlín</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm text-[#686662]">
+                <a href="#about" class="hover:opacity-100 transition" data-cz="O nás" data-en="Philosophy">O nás</a>
+                <a href="#services" class="hover:opacity-100 transition" data-cz="Ceník & Služby" data-en="Services & Menu">Ceník & Služby</a>
+                <a href="#reviews" class="hover:opacity-100 transition" data-cz="Recenze" data-en="Reviews">Recenze</a>
+                <a href="#contact" class="hover:opacity-100 transition" data-cz="Kontakt" data-en="Visit Us">Kontakt</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <!-- Clean Pill Language Switcher -->
+                <div class="inline-flex items-center rounded-full p-1 border bg-white border-[#E6E4DD] text-xs">
+                    <button id="btn-lang-cz" onclick="setLanguage('cz')" class="px-2.5 py-1 rounded-full font-medium bg-[#141413] hover:bg-[#2C2C2A] text-white transition cursor-pointer">CZ</button>
+                    <button id="btn-lang-en" onclick="setLanguage('en')" class="px-2.5 py-1 rounded-full font-medium text-[#686662] transition cursor-pointer">EN</button>
+                </div>
+
+                <button onclick="openBookingModal('')" class="px-5 py-2.5 rounded-full text-xs font-medium bg-[#141413] hover:bg-[#2C2C2A] text-white transition cursor-pointer" data-cz="Rezervovat termín" data-en="Book Appointment">
+                    Rezervovat termín
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Spacious Split Editorial Hero Section -->
+    <section class="max-w-6xl mx-auto px-6 pt-14 pb-24 lg:py-24">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div class="lg:col-span-6 space-y-8">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium border bg-[#EFECE6] text-[#4A4945] border-[#E0DDD5]">
+                    <span data-cz="Kadeřnický & Barber Ateliér • Karlín" data-en="Minimalist Hair & Grooming Studio • Karlín">Kadeřnický & Barber Ateliér • Karlín</span>
+                </div>
+
+                <h1 class="font-editorial text-5xl sm:text-6xl leading-[1.06] font-normal tracking-tight" data-cz="Nadčasový střih a osobní péče v lokalitě Karlín" data-en="Timeless Haircuts & Tailored Grooming in Karlín">
+                    Nadčasový střih a osobní péče v lokalitě Karlín
+                </h1>
+
+                <p class="text-base sm:text-lg text-[#686662] leading-relaxed max-w-xl" data-cz="Klidné prostředí bez spěchu, detailní konzultace a přírodní vlasová kosmetika. Mluvíme česky i anglicky." data-en="An unhurried studio experience, detailed style consultation, and natural hair care. Czech and English speaking stylists.">
+                    Klidné prostředí bez spěchu, detailní konzultace a přírodní vlasová kosmetika. Mluvíme česky i anglicky.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-3.5 pt-2">
+                    <button onclick="openBookingModal('')" class="px-7 py-4 rounded-full text-sm font-medium bg-[#141413] hover:bg-[#2C2C2A] text-white transition cursor-pointer flex items-center gap-2">
+                        <span data-cz="Rezervovat termín" data-en="Book Appointment">Rezervovat termín</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                    <a href="#services" class="px-7 py-4 rounded-full text-sm font-medium border bg-white hover:bg-[#F2F0EA] text-[#141413] border-[#E2DFD7] transition">
+                        <span data-cz="Ceník služeb" data-en="Service Menu">Ceník služeb</span>
+                    </a>
+                </div>
+
+                <div class="pt-6 border-t border-black/5 flex items-center gap-8 text-xs text-[#686662]">
+                    <div>
+                        <span class="font-semibold text-sm text-current">4.8 ★</span>
+                        <span class="ml-1">(80+ Google)</span>
+                    </div>
+                    <div>📍 Březinova 15, Praha 8, Karlín</div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6">
+                <div class="rounded-[32px] overflow-hidden aspect-[4/3] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.08)] bg-stone-200">
+                    <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1400&q=85" alt="Pánské Holičství Karlín" class="w-full h-full object-cover" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento Value Propositions -->
+    <section id="about" class="py-20 bg-[#F2F0EA]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="max-w-xl mb-14">
+                <p class="text-xs font-medium uppercase tracking-widest text-[#686662] mb-3" data-cz="NÁŠ PŘÍSTUP" data-en="OUR PHILOSOPHY">NÁŠ PŘÍSTUP</p>
+                <h2 class="font-editorial text-4xl sm:text-5xl font-normal" data-cz="Důraz na detail, klid a poctivou kvalitu" data-en="Thoughtful craft, calm atmosphere & honest quality">Důraz na detail, klid a poctivou kvalitu</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                
+        <div class="p-8 rounded-3xl border bg-white border-[#E6E4DD] transition-all duration-300 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.06)]">
+            <div class="w-11 h-11 rounded-2xl bg-[#F2F0EA] text-[#141413] flex items-center justify-center mb-6">
+                <i data-lucide="scissors" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-semibold tracking-tight mb-2.5" data-cz="Střih na míru" data-en="Bespoke Precision Cut">Střih na míru</h3>
+            <p class="text-[#686662] text-sm leading-relaxed" data-cz="Každý střih začíná pečlivou konzultací podle tvaru obličeje a typu vlasů." data-en="Every visit begins with a personal consultation tailored to your features.">Každý střih začíná pečlivou konzultací podle tvaru obličeje a typu vlasů.</p>
+        </div>
+        
+        <div class="p-8 rounded-3xl border bg-white border-[#E6E4DD] transition-all duration-300 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.06)]">
+            <div class="w-11 h-11 rounded-2xl bg-[#F2F0EA] text-[#141413] flex items-center justify-center mb-6">
+                <i data-lucide="sparkles" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-semibold tracking-tight mb-2.5" data-cz="Šetrná přírodní kosmetika" data-en="Clean Botanical Products">Šetrná přírodní kosmetika</h3>
+            <p class="text-[#686662] text-sm leading-relaxed" data-cz="Používáme špičkovou udržitelnou kosmetiku šetrnou k pokožce." data-en="Formulated with organic botanicals for healthy hair and scalp.">Používáme špičkovou udržitelnou kosmetiku šetrnou k pokožce.</p>
+        </div>
+        
+        <div class="p-8 rounded-3xl border bg-white border-[#E6E4DD] transition-all duration-300 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.06)]">
+            <div class="w-11 h-11 rounded-2xl bg-[#F2F0EA] text-[#141413] flex items-center justify-center mb-6">
+                <i data-lucide="globe" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-semibold tracking-tight mb-2.5" data-cz="Česky & English Friendly" data-en="Bilingual Stylists">Česky & English Friendly</h3>
+            <p class="text-[#686662] text-sm leading-relaxed" data-cz="Pohodlná komunikace v češtině i angličtině a online rezervace." data-en="Effortless communication in Czech and English with instant booking.">Pohodlná komunikace v češtině i angličtině a online rezervace.</p>
+        </div>
+        
+            </div>
+        </div>
+    </section>
+
+    <!-- Clean Editorial Services & Pricing -->
+    <section id="services" class="py-24 max-w-4xl mx-auto px-6">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-14 gap-4">
+            <div>
+                <p class="text-xs font-medium uppercase tracking-widest text-[#686662] mb-3" data-cz="CENÍK & NABÍDKA" data-en="TRANSPARENT PRICING">CENÍK & NABÍDKA</p>
+                <h2 class="font-editorial text-4xl sm:text-5xl font-normal" data-cz="Vybrané služby a ceník" data-en="Curated Services & Menu">Vybrané služby a ceník</h2>
+            </div>
+            <button onclick="openBookingModal('')" class="px-5 py-2.5 rounded-full text-xs font-medium bg-[#141413] hover:bg-[#2C2C2A] text-white self-start sm:self-auto cursor-pointer" data-cz="Online rezervace" data-en="Book Online">
+                Online rezervace
+            </button>
+        </div>
+        <div class="space-y-3.5">
+            
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#E6E4DD] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Pánský střih & Styling" data-en="Men's Tailored Cut & Styling">Pánský střih & Styling</h4>
+                <p class="text-sm text-[#686662]" data-cz="Konzultace, mytí, masáž hlavy, precizní střih a finální úprava (45 min)" data-en="Consultation, wash, scalp massage, precision cut & finish (45 min)">Konzultace, mytí, masáž hlavy, precizní střih a finální úprava (45 min)</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#141413] whitespace-nowrap">590 Kč</span>
+                <button onclick="openBookingModal('Pánský střih & Styling')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#F2F0EA] text-[#141413] border-[#E2DFD7] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#E6E4DD] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Úprava vousů & Hot Towel rituál" data-en="Beard Sculpting & Hot Towel Ritual">Úprava vousů & Hot Towel rituál</h4>
+                <p class="text-sm text-[#686662]" data-cz="Tvarování vousů, napaření horkým ručníkem a výživný olej (30 min)" data-en="Beard shaping, aromatic hot towel steam & organic oil (30 min)">Tvarování vousů, napaření horkým ručníkem a výživný olej (30 min)</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#141413] whitespace-nowrap">450 Kč</span>
+                <button onclick="openBookingModal('Úprava vousů & Hot Towel rituál')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#F2F0EA] text-[#141413] border-[#E2DFD7] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#E6E4DD] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Kompletní péče (Vlasy + Vousy)" data-en="Complete Studio Ritual (Hair + Beard)">Kompletní péče (Vlasy + Vousy)</h4>
+                <p class="text-sm text-[#686662]" data-cz="Střih vlasů, úprava vousů, masáž hlavy a výběrová káva (75 min)" data-en="Full haircut, beard ritual, relaxing massage & specialty coffee (75 min)">Střih vlasů, úprava vousů, masáž hlavy a výběrová káva (75 min)</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#141413] whitespace-nowrap">890 Kč</span>
+                <button onclick="openBookingModal('Kompletní péče (Vlasy + Vousy)')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#F2F0EA] text-[#141413] border-[#E2DFD7] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#E6E4DD] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Dámský střih, mytí & foukaná" data-en="Women's Cut, Wash & Signature Blowout">Dámský střih, mytí & foukaná</h4>
+                <p class="text-sm text-[#686662]" data-cz="Regenerační lázeň, střih na míru a přirozený styling (60 min)" data-en="Deep hydration bath, tailored cut & effortless styling (60 min)">Regenerační lázeň, střih na míru a přirozený styling (60 min)</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#141413] whitespace-nowrap">950 Kč</span>
+                <button onclick="openBookingModal('Dámský střih, mytí & foukaná')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#F2F0EA] text-[#141413] border-[#E2DFD7] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#E6E4DD] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Barvení / Balayage / Tónování" data-en="Natural Balayage & Glossing">Barvení / Balayage / Tónování</h4>
+                <p class="text-sm text-[#686662]" data-cz="Šetrné zesvětlení a tónování pro přirozený lesk vlasů" data-en="Gentle hand-painted highlights and bond-building gloss">Šetrné zesvětlení a tónování pro přirozený lesk vlasů</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#141413] whitespace-nowrap">od 1 690 Kč</span>
+                <button onclick="openBookingModal('Barvení / Balayage / Tónování')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#F2F0EA] text-[#141413] border-[#E2DFD7] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#E6E4DD] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Studentský střih" data-en="Student Haircut">Studentský střih</h4>
+                <p class="text-sm text-[#686662]" data-cz="Kompletní střih a mytí se studentskou slevou" data-en="Full wash, cut, and style for students">Kompletní střih a mytí se studentskou slevou</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#141413] whitespace-nowrap">450 Kč</span>
+                <button onclick="openBookingModal('Studentský střih')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#F2F0EA] text-[#141413] border-[#E2DFD7] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        </div>
+    </section>
+
+    <!-- Minimalist Visual Gallery -->
+    <section class="py-12 max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-6">
+            
+        <div class="overflow-hidden rounded-3xl aspect-[4/3] bg-stone-100">
+            <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80" alt="Pánské Holičství Karlín" class="w-full h-full object-cover hover:scale-[1.03] transition duration-700 ease-out" loading="lazy" />
+        </div>
+        
+        <div class="overflow-hidden rounded-3xl aspect-[4/3] bg-stone-100">
+            <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=800&q=80" alt="Pánské Holičství Karlín" class="w-full h-full object-cover hover:scale-[1.03] transition duration-700 ease-out" loading="lazy" />
+        </div>
+        
+        <div class="overflow-hidden rounded-3xl aspect-[4/3] bg-stone-100">
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80" alt="Pánské Holičství Karlín" class="w-full h-full object-cover hover:scale-[1.03] transition duration-700 ease-out" loading="lazy" />
+        </div>
+        
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="reviews" class="py-24 max-w-6xl mx-auto px-6">
+        <div class="max-w-xl mb-12">
+            <p class="text-xs font-medium uppercase tracking-widest text-[#686662] mb-3" data-cz="HODNOCENÍ KLIENTŮ" data-en="CLIENT STORIES">HODNOCENÍ KLIENTŮ</p>
+            <h2 class="font-editorial text-4xl font-normal" data-cz="Zkušenosti našich návštěvníků" data-en="Words from Our Community">Zkušenosti našich návštěvníků</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+            
+        <div class="p-8 rounded-3xl border bg-white border-[#E6E4DD] flex flex-col justify-between">
+            <div>
+                <div class="flex items-center gap-1 text-sm mb-4 text-[#141413]">
+                    <span>★ ★ ★ ★ ★</span>
+                    <span class="text-xs text-[#686662] ml-2 font-normal">Google Review</span>
+                </div>
+                <p class="text-base leading-relaxed mb-6" data-cz="&ldquo;Čistý minimalistický salon, žádný hluk a naprosto precizní střih.&rdquo;" data-en="&ldquo;Clean minimalist studio, calm vibe, and the most precise haircut I've had in Prague.&rdquo;">&ldquo;Čistý minimalistický salon, žádný hluk a naprosto precizní střih.&rdquo;</p>
+            </div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-[#686662]">— Jakub Novotný</div>
+        </div>
+        
+        <div class="p-8 rounded-3xl border bg-white border-[#E6E4DD] flex flex-col justify-between">
+            <div>
+                <div class="flex items-center gap-1 text-sm mb-4 text-[#141413]">
+                    <span>★ ★ ★ ★ ★</span>
+                    <span class="text-xs text-[#686662] ml-2 font-normal">Google Review</span>
+                </div>
+                <p class="text-base leading-relaxed mb-6" data-cz="&ldquo;Skvělá domluva anglicky i česky. Odcházel jsem maximálně spokojený.&rdquo;" data-en="&ldquo;Seamless consultation in English and top-tier attention to detail.&rdquo;">&ldquo;Skvělá domluva anglicky i česky. Odcházel jsem maximálně spokojený.&rdquo;</p>
+            </div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-[#686662]">— David Miller</div>
+        </div>
+        
+        </div>
+    </section>
+
+    <!-- Location & Contact -->
+    <section id="contact" class="py-24 bg-[#F2F0EA]">
+        <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5 space-y-8">
+                <div>
+                    <p class="text-xs font-medium uppercase tracking-widest text-[#686662] mb-3" data-cz="KONTAKT & ADRESA" data-en="VISIT US">KONTAKT & ADRESA</p>
+                    <h2 class="font-editorial text-4xl sm:text-5xl font-normal mb-4">Pánské Holičství Karlín</h2>
+                    <p class="text-sm text-[#686662] leading-relaxed" data-cz="Zastavte se u nás osobně nebo si rezervujte termín online." data-en="Visit us in person or reserve your preferred time slot online.">
+                        Zastavte se u nás osobně nebo si rezervujte termín online.
+                    </p>
+                </div>
+
+                <div class="space-y-5 text-sm">
+                    <div class="p-5 rounded-2xl border bg-white border-[#E6E4DD]">
+                        <div class="text-xs text-[#686662] mb-1" data-cz="Adresa" data-en="Address">Adresa</div>
+                        <div class="font-medium">Březinova 15, Praha 8, Karlín</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=P%C3%A1nsk%C3%A9%20Holi%C4%8Dstv%C3%AD%20Karl%C3%ADn%20B%C5%99ezinova%2015%2C%20Praha%208%2C%20Karl%C3%ADn" target="_blank" class="text-xs underline mt-2 inline-block text-[#141413]" data-cz="Otevřít v Google Maps →" data-en="Open in Google Maps →">Otevřít v Google Maps →</a>
+                    </div>
+
+                    <div class="p-5 rounded-2xl border bg-white border-[#E6E4DD]">
+                        <div class="text-xs text-[#686662] mb-1" data-cz="Otevírací doba" data-en="Opening Hours">Otevírací doba</div>
+                        <div class="font-medium">Po–Pá 09:00–19:00, So 10:00–16:00</div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl border bg-white border-[#E6E4DD] flex items-center justify-between">
+                        <div>
+                            <div class="text-xs text-[#686662] mb-1" data-cz="Telefon & WhatsApp" data-en="Direct Contact">Telefon & WhatsApp</div>
+                            <a href="tel:+420724309118" class="font-medium hover:underline">+420 724 309 118</a>
+                        </div>
+                        <a href="https://wa.me/420724309118" target="_blank" class="px-4 py-2 rounded-full text-xs font-medium bg-[#141413] hover:bg-[#2C2C2A] text-white">
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7">
+                <div class="rounded-3xl overflow-hidden border bg-white border-[#E6E4DD] h-[420px] shadow-sm bg-stone-100">
+                    <iframe width="100%" height="100%" frameborder="0" scrolling="no" src="https://www.openstreetmap.org/export/embed.html?bbox=14.4475%2C50.091049999999996%2C14.457500000000001%2C50.097049999999996&layer=mapnik&marker=50.094049999999996%2C14.4525" title="Pánské Holičství Karlín Map"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 px-6 border-t border-black/5 text-xs text-[#686662]">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="font-medium text-current">Pánské Holičství Karlín — Karlín, Praha</div>
+            <div data-cz="© 2026 Všechna práva vyhrazena." data-en="© 2026 All rights reserved.">© 2026 Všechna práva vyhrazena.</div>
+        </div>
+    </footer>
+
+    <!-- Minimalist Booking Modal -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden bg-black/30 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white text-[#141413] rounded-3xl max-w-md w-full p-8 shadow-2xl border border-stone-200 relative">
+            <button onclick="closeBookingModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center text-xs cursor-pointer">✕</button>
+            <h3 class="font-editorial text-3xl font-normal mb-1" data-cz="Online rezervace" data-en="Reserve Your Visit">Online rezervace</h3>
+            <p class="text-xs text-stone-500 mb-6">Pánské Holičství Karlín • Březinova 15, Praha 8, Karlín</p>
+
+            <form onsubmit="submitBooking(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-stone-600 mb-1.5" data-cz="Vybraná služba" data-en="Selected Service">Vybraná služba</label>
+                    <select id="modal-service" class="w-full rounded-xl border border-stone-200 bg-stone-50 px-3.5 py-2.5 text-sm">
+                        <option value="Pánský střih & Styling (590 Kč)">Pánský střih & Styling — 590 Kč</option><option value="Úprava vousů & Hot Towel rituál (450 Kč)">Úprava vousů & Hot Towel rituál — 450 Kč</option><option value="Kompletní péče (Vlasy + Vousy) (890 Kč)">Kompletní péče (Vlasy + Vousy) — 890 Kč</option><option value="Dámský střih, mytí & foukaná (950 Kč)">Dámský střih, mytí & foukaná — 950 Kč</option><option value="Barvení / Balayage / Tónování (od 1 690 Kč)">Barvení / Balayage / Tónování — od 1 690 Kč</option><option value="Studentský střih (450 Kč)">Studentský střih — 450 Kč</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-medium text-stone-600 mb-1.5" data-cz="Datum" data-en="Date">Datum</label>
+                        <input type="date" id="modal-date" required class="w-full rounded-xl border border-stone-200 bg-stone-50 px-3 py-2.5 text-sm" />
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-stone-600 mb-1.5" data-cz="Čas" data-en="Time">Čas</label>
+                        <input type="time" id="modal-time" value="14:00" required class="w-full rounded-xl border border-stone-200 bg-stone-50 px-3 py-2.5 text-sm" />
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-stone-600 mb-1.5" data-cz="Jméno a telefon" data-en="Your Name & Phone">Jméno a telefon</label>
+                    <input type="text" id="modal-name" placeholder="Jan Novák, +420..." required class="w-full rounded-xl border border-stone-200 bg-stone-50 px-3.5 py-2.5 text-sm" />
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-full font-medium text-sm bg-[#141413] hover:bg-[#2C2C2A] text-white transition cursor-pointer mt-2" data-cz="Potvrdit rezervaci" data-en="Confirm Request">
+                    Potvrdit rezervaci
+                </button>
+            </form>
+            <div id="booking-success" class="hidden mt-4 p-4 rounded-2xl bg-stone-100 text-stone-800 text-xs font-medium text-center">
+                ✓ <span data-cz="Děkujeme! Vaše rezervace byla přijata." data-en="Thank you! Your request has been received.">Děkujeme! Vaše rezervace byla přijata.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+                el.innerHTML = el.getAttribute('data-' + lang);
+            });
+            const btnCz = document.getElementById('btn-lang-cz');
+            const btnEn = document.getElementById('btn-lang-en');
+            if (lang === 'cz') {
+                btnCz.className = 'px-2.5 py-1 rounded-full font-medium bg-[#141413] hover:bg-[#2C2C2A] text-white transition cursor-pointer';
+                btnEn.className = 'px-2.5 py-1 rounded-full font-medium text-[#686662] transition cursor-pointer';
+            } else {
+                btnEn.className = 'px-2.5 py-1 rounded-full font-medium bg-[#141413] hover:bg-[#2C2C2A] text-white transition cursor-pointer';
+                btnCz.className = 'px-2.5 py-1 rounded-full font-medium text-[#686662] transition cursor-pointer';
+            }
+        }
+        function openBookingModal() {
+            document.getElementById('booking-modal').classList.remove('hidden');
+            document.getElementById('booking-success').classList.add('hidden');
+            document.getElementById('modal-date').value = new Date().toISOString().split('T')[0];
+        }
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+        }
+        function submitBooking(e) {
+            e.preventDefault();
+            document.getElementById('booking-success').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

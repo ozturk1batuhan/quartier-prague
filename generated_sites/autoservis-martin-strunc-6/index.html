@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="cs" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Autoservis Martin Štrunc — Čimice, Praha</title>
+    <meta name="description" content="Pravidelný servis, pneuservis a přesná diagnostika všech značek. Jasná kalkulace předem, fotodokumentace opravy a záruka." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: -0.011em; }
+        .font-editorial { font-family: 'Instrument Serif', Georgia, serif; letter-spacing: -0.02em; }
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#0F172A] antialiased">
+
+    <!-- Floating Minimalist Navigation -->
+    <header class="sticky top-0 z-40 backdrop-blur-xl bg-[#F8FAFC]/85 border-[#E2E8F0] border-b">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
+            <a href="#" class="text-lg font-semibold tracking-tight flex items-center gap-2.5">
+                <span>Autoservis Martin Štrunc</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm text-[#64748B]">
+                <a href="#about" class="hover:opacity-100 transition" data-cz="O nás" data-en="Philosophy">O nás</a>
+                <a href="#services" class="hover:opacity-100 transition" data-cz="Ceník & Služby" data-en="Services & Menu">Ceník & Služby</a>
+                <a href="#reviews" class="hover:opacity-100 transition" data-cz="Recenze" data-en="Reviews">Recenze</a>
+                <a href="#contact" class="hover:opacity-100 transition" data-cz="Kontakt" data-en="Visit Us">Kontakt</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <!-- Clean Pill Language Switcher -->
+                <div class="inline-flex items-center rounded-full p-1 border bg-white border-[#E2E8F0] text-xs">
+                    <button id="btn-lang-cz" onclick="setLanguage('cz')" class="px-2.5 py-1 rounded-full font-medium bg-[#1E293B] hover:bg-[#334155] text-white transition cursor-pointer">CZ</button>
+                    <button id="btn-lang-en" onclick="setLanguage('en')" class="px-2.5 py-1 rounded-full font-medium text-[#64748B] transition cursor-pointer">EN</button>
+                </div>
+
+                <button onclick="openBookingModal('')" class="px-5 py-2.5 rounded-full text-xs font-medium bg-[#1E293B] hover:bg-[#334155] text-white transition cursor-pointer" data-cz="Rezervovat termín servisu" data-en="Schedule Service">
+                    Rezervovat termín servisu
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Spacious Split Editorial Hero Section -->
+    <section class="max-w-6xl mx-auto px-6 pt-14 pb-24 lg:py-24">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div class="lg:col-span-6 space-y-8">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium border bg-[#EEF2FF] text-[#3730A3] border-[#E0E7FF]">
+                    <span data-cz="Moderní Autoservis & Diagnostika • Čimice" data-en="Modern Auto Care & Diagnostics • Čimice">Moderní Autoservis & Diagnostika • Čimice</span>
+                </div>
+
+                <h1 class="font-editorial text-5xl sm:text-6xl leading-[1.06] font-normal tracking-tight" data-cz="Transparentní péče o váš vůz v lokalitě Čimice" data-en="Transparent, Modern Auto Service in Čimice">
+                    Transparentní péče o váš vůz v lokalitě Čimice
+                </h1>
+
+                <p class="text-base sm:text-lg text-[#64748B] leading-relaxed max-w-xl" data-cz="Pravidelný servis, pneuservis a přesná diagnostika všech značek. Jasná kalkulace předem, fotodokumentace opravy a záruka." data-en="Scheduled maintenance, tire care, and computer diagnostics for all makes. Upfront digital quotes and photo reports.">
+                    Pravidelný servis, pneuservis a přesná diagnostika všech značek. Jasná kalkulace předem, fotodokumentace opravy a záruka.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-3.5 pt-2">
+                    <button onclick="openBookingModal('')" class="px-7 py-4 rounded-full text-sm font-medium bg-[#1E293B] hover:bg-[#334155] text-white transition cursor-pointer flex items-center gap-2">
+                        <span data-cz="Rezervovat termín servisu" data-en="Schedule Service">Rezervovat termín servisu</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                    <a href="#services" class="px-7 py-4 rounded-full text-sm font-medium border bg-white hover:bg-[#F1F5F9] text-[#0F172A] border-[#E2E8F0] transition">
+                        <span data-cz="Ceník úkonů" data-en="Transparent Pricing">Ceník úkonů</span>
+                    </a>
+                </div>
+
+                <div class="pt-6 border-t border-black/5 flex items-center gap-8 text-xs text-[#64748B]">
+                    <div>
+                        <span class="font-semibold text-sm text-current">4.7 ★</span>
+                        <span class="ml-1">(24+ Google)</span>
+                    </div>
+                    <div>📍 Žalovská 613/35, Praha 8</div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6">
+                <div class="rounded-[32px] overflow-hidden aspect-[4/3] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.08)] bg-stone-200">
+                    <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1400&q=85" alt="Autoservis Martin Štrunc" class="w-full h-full object-cover" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento Value Propositions -->
+    <section id="about" class="py-20 bg-[#F1F5F9]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="max-w-xl mb-14">
+                <p class="text-xs font-medium uppercase tracking-widest text-[#64748B] mb-3" data-cz="NÁŠ PŘÍSTUP" data-en="OUR PHILOSOPHY">NÁŠ PŘÍSTUP</p>
+                <h2 class="font-editorial text-4xl sm:text-5xl font-normal" data-cz="Důraz na detail, klid a poctivou kvalitu" data-en="Thoughtful craft, calm atmosphere & honest quality">Důraz na detail, klid a poctivou kvalitu</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                
+        <div class="p-8 rounded-3xl border bg-white border-[#E2E8F0] transition-all duration-300 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.06)]">
+            <div class="w-11 h-11 rounded-2xl bg-[#EEF2FF] text-[#3730A3] flex items-center justify-center mb-6">
+                <i data-lucide="file-check" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-semibold tracking-tight mb-2.5" data-cz="Kalkulace vždy předem" data-en="Upfront Digital Approval">Kalkulace vždy předem</h3>
+            <p class="text-[#64748B] text-sm leading-relaxed" data-cz="Žádné překvapení na faktuře. Každou položku schvalujete předem." data-en="We send a clear quote for your approval before touching a bolt.">Žádné překvapení na faktuře. Každou položku schvalujete předem.</p>
+        </div>
+        
+        <div class="p-8 rounded-3xl border bg-white border-[#E2E8F0] transition-all duration-300 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.06)]">
+            <div class="w-11 h-11 rounded-2xl bg-[#EEF2FF] text-[#3730A3] flex items-center justify-center mb-6">
+                <i data-lucide="cpu" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-semibold tracking-tight mb-2.5" data-cz="Přesná diagnostika" data-en="OEM-Level Diagnostics">Přesná diagnostika</h3>
+            <p class="text-[#64748B] text-sm leading-relaxed" data-cz="Moderní vybavení pro evropské i asijské vozy bez ztráty záruky." data-en="Advanced diagnostic systems for Škoda, VW, BMW, Audi & Toyota.">Moderní vybavení pro evropské i asijské vozy bez ztráty záruky.</p>
+        </div>
+        
+        <div class="p-8 rounded-3xl border bg-white border-[#E2E8F0] transition-all duration-300 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.06)]">
+            <div class="w-11 h-11 rounded-2xl bg-[#EEF2FF] text-[#3730A3] flex items-center justify-center mb-6">
+                <i data-lucide="clock" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-semibold tracking-tight mb-2.5" data-cz="Servis v ten samý den" data-en="Same-Day Turnaround">Servis v ten samý den</h3>
+            <p class="text-[#64748B] text-sm leading-relaxed" data-cz="Běžný servis, brzdy a přezutí vyřešíme během jediného dne." data-en="Most maintenance, brakes, and tire services completed same day.">Běžný servis, brzdy a přezutí vyřešíme během jediného dne.</p>
+        </div>
+        
+            </div>
+        </div>
+    </section>
+
+    <!-- Clean Editorial Services & Pricing -->
+    <section id="services" class="py-24 max-w-4xl mx-auto px-6">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-14 gap-4">
+            <div>
+                <p class="text-xs font-medium uppercase tracking-widest text-[#64748B] mb-3" data-cz="CENÍK & NABÍDKA" data-en="TRANSPARENT PRICING">CENÍK & NABÍDKA</p>
+                <h2 class="font-editorial text-4xl sm:text-5xl font-normal" data-cz="Vybrané služby a ceník" data-en="Curated Services & Menu">Vybrané služby a ceník</h2>
+            </div>
+            <button onclick="openBookingModal('')" class="px-5 py-2.5 rounded-full text-xs font-medium bg-[#1E293B] hover:bg-[#334155] text-white self-start sm:self-auto cursor-pointer" data-cz="Online rezervace" data-en="Book Online">
+                Online rezervace
+            </button>
+        </div>
+        <div class="space-y-3.5">
+            
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#E2E8F0] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Kompletní přezutí a vyvážení kol (4 ks)" data-en="Complete Tire Swap & Digital Balancing">Kompletní přezutí a vyvážení kol (4 ks)</h4>
+                <p class="text-sm text-[#64748B]" data-cz="Demontáž, montáž, vyvážení a kontrola brzdového obložení" data-en="Mount, precision balance, pressure check & visual brake inspection">Demontáž, montáž, vyvážení a kontrola brzdového obložení</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#3730A3] whitespace-nowrap">od 890 Kč</span>
+                <button onclick="openBookingModal('Kompletní přezutí a vyvážení kol (4 ks)')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#F1F5F9] text-[#0F172A] border-[#E2E8F0] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#E2E8F0] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Roční servis: Výměna oleje, filtrů & prohlídka" data-en="Annual Oil Service & 25-Point Inspection">Roční servis: Výměna oleje, filtrů & prohlídka</h4>
+                <p class="text-sm text-[#64748B]" data-cz="Výměna oleje a filtrů + kontrola podvozku, baterie a kapalin" data-en="Oil & filter change plus suspension, battery, and fluid check">Výměna oleje a filtrů + kontrola podvozku, baterie a kapalin</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#3730A3] whitespace-nowrap">od 1 490 Kč</span>
+                <button onclick="openBookingModal('Roční servis: Výměna oleje, filtrů & prohlídka')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#F1F5F9] text-[#0F172A] border-[#E2E8F0] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#E2E8F0] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Počítačová diagnostika řídících jednotek" data-en="Full Computer OBD-II System Scan">Počítačová diagnostika řídících jednotek</h4>
+                <p class="text-sm text-[#64748B]" data-cz="Výpis chybových kódů, živá data a návrh efektivního řešení" data-en="Complete fault report and honest repair recommendation">Výpis chybových kódů, živá data a návrh efektivního řešení</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#3730A3] whitespace-nowrap">590 Kč</span>
+                <button onclick="openBookingModal('Počítačová diagnostika řídících jednotek')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#F1F5F9] text-[#0F172A] border-[#E2E8F0] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#E2E8F0] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Čištění a plnění klimatizace + Ozón" data-en="A/C Recharge & Ozone Cabin Sanitization">Čištění a plnění klimatizace + Ozón</h4>
+                <p class="text-sm text-[#64748B]" data-cz="Test těsnosti, doplnění chladiva a dezinfekce interiéru" data-en="Vacuum test, refrigerant refill, and antibacterial ozone treatment">Test těsnosti, doplnění chladiva a dezinfekce interiéru</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#3730A3] whitespace-nowrap">od 990 Kč</span>
+                <button onclick="openBookingModal('Čištění a plnění klimatizace + Ozón')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#F1F5F9] text-[#0F172A] border-[#E2E8F0] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#E2E8F0] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Příprava a vyřízení STK + Emise" data-en="Complete STK / MOT Inspection Handling">Příprava a vyřízení STK + Emise</h4>
+                <p class="text-sm text-[#64748B]" data-cz="Kontrola vozu na dílně a absolvování oficiální STK za vás" data-en="Pre-check and full handling of official Czech technical inspection">Kontrola vozu na dílně a absolvování oficiální STK za vás</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#3730A3] whitespace-nowrap">od 2 400 Kč</span>
+                <button onclick="openBookingModal('Příprava a vyřízení STK + Emise')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#F1F5F9] text-[#0F172A] border-[#E2E8F0] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        </div>
+    </section>
+
+    <!-- Minimalist Visual Gallery -->
+    <section class="py-12 max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-6">
+            
+        <div class="overflow-hidden rounded-3xl aspect-[4/3] bg-stone-100">
+            <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=800&q=80" alt="Autoservis Martin Štrunc" class="w-full h-full object-cover hover:scale-[1.03] transition duration-700 ease-out" loading="lazy" />
+        </div>
+        
+        <div class="overflow-hidden rounded-3xl aspect-[4/3] bg-stone-100">
+            <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=800&q=80" alt="Autoservis Martin Štrunc" class="w-full h-full object-cover hover:scale-[1.03] transition duration-700 ease-out" loading="lazy" />
+        </div>
+        
+        <div class="overflow-hidden rounded-3xl aspect-[4/3] bg-stone-100">
+            <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=800&q=80" alt="Autoservis Martin Štrunc" class="w-full h-full object-cover hover:scale-[1.03] transition duration-700 ease-out" loading="lazy" />
+        </div>
+        
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="reviews" class="py-24 max-w-6xl mx-auto px-6">
+        <div class="max-w-xl mb-12">
+            <p class="text-xs font-medium uppercase tracking-widest text-[#64748B] mb-3" data-cz="HODNOCENÍ KLIENTŮ" data-en="CLIENT STORIES">HODNOCENÍ KLIENTŮ</p>
+            <h2 class="font-editorial text-4xl font-normal" data-cz="Zkušenosti našich návštěvníků" data-en="Words from Our Community">Zkušenosti našich návštěvníků</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+            
+        <div class="p-8 rounded-3xl border bg-white border-[#E2E8F0] flex flex-col justify-between">
+            <div>
+                <div class="flex items-center gap-1 text-sm mb-4 text-[#3730A3]">
+                    <span>★ ★ ★ ★ ★</span>
+                    <span class="text-xs text-[#64748B] ml-2 font-normal">Google Review</span>
+                </div>
+                <p class="text-base leading-relaxed mb-6" data-cz="&ldquo;Čistá dílna, profesionální jednání a férové ceny. Vše poslali předem ke schválení.&rdquo;" data-en="&ldquo;Clean workshop, honest communication, and zero surprise charges.&rdquo;">&ldquo;Čistá dílna, profesionální jednání a férové ceny. Vše poslali předem ke schválení.&rdquo;</p>
+            </div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-[#64748B]">— Martin Procházka</div>
+        </div>
+        
+        <div class="p-8 rounded-3xl border bg-white border-[#E2E8F0] flex flex-col justify-between">
+            <div>
+                <div class="flex items-center gap-1 text-sm mb-4 text-[#3730A3]">
+                    <span>★ ★ ★ ★ ★</span>
+                    <span class="text-xs text-[#64748B] ml-2 font-normal">Google Review</span>
+                </div>
+                <p class="text-base leading-relaxed mb-6" data-cz="&ldquo;Skvělá komunikace anglicky, rychlá výměna brzd a férový přístup.&rdquo;" data-en="&ldquo;Fluent English communication and fast, transparent brake service.&rdquo;">&ldquo;Skvělá komunikace anglicky, rychlá výměna brzd a férový přístup.&rdquo;</p>
+            </div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-[#64748B]">— Chris Evans</div>
+        </div>
+        
+        </div>
+    </section>
+
+    <!-- Location & Contact -->
+    <section id="contact" class="py-24 bg-[#F1F5F9]">
+        <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5 space-y-8">
+                <div>
+                    <p class="text-xs font-medium uppercase tracking-widest text-[#64748B] mb-3" data-cz="KONTAKT & ADRESA" data-en="VISIT US">KONTAKT & ADRESA</p>
+                    <h2 class="font-editorial text-4xl sm:text-5xl font-normal mb-4">Autoservis Martin Štrunc</h2>
+                    <p class="text-sm text-[#64748B] leading-relaxed" data-cz="Zastavte se u nás osobně nebo si rezervujte termín online." data-en="Visit us in person or reserve your preferred time slot online.">
+                        Zastavte se u nás osobně nebo si rezervujte termín online.
+                    </p>
+                </div>
+
+                <div class="space-y-5 text-sm">
+                    <div class="p-5 rounded-2xl border bg-white border-[#E2E8F0]">
+                        <div class="text-xs text-[#64748B] mb-1" data-cz="Adresa" data-en="Address">Adresa</div>
+                        <div class="font-medium">Žalovská 613/35, Praha 8</div>
+                        <a href="https://www.firmy.cz/?q=Autoservis+Martin+%C5%A0trunc+Praha" target="_blank" class="text-xs underline mt-2 inline-block text-[#3730A3]" data-cz="Otevřít v Google Maps →" data-en="Open in Google Maps →">Otevřít v Google Maps →</a>
+                    </div>
+
+                    <div class="p-5 rounded-2xl border bg-white border-[#E2E8F0]">
+                        <div class="text-xs text-[#64748B] mb-1" data-cz="Otevírací doba" data-en="Opening Hours">Otevírací doba</div>
+                        <div class="font-medium">Po–Pá 08:00–17:00</div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl border bg-white border-[#E2E8F0] flex items-center justify-between">
+                        <div>
+                            <div class="text-xs text-[#64748B] mb-1" data-cz="Telefon & WhatsApp" data-en="Direct Contact">Telefon & WhatsApp</div>
+                            <a href="tel:+420603367394" class="font-medium hover:underline">+420 603 367 394</a>
+                        </div>
+                        <a href="https://wa.me/420603367394" target="_blank" class="px-4 py-2 rounded-full text-xs font-medium bg-[#1E293B] hover:bg-[#334155] text-white">
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7">
+                <div class="rounded-3xl overflow-hidden border bg-white border-[#E2E8F0] h-[420px] shadow-sm bg-stone-100">
+                    <iframe width="100%" height="100%" frameborder="0" scrolling="no" src="https://www.openstreetmap.org/export/embed.html?bbox=14.427%2C50.138%2C14.437000000000001%2C50.144&layer=mapnik&marker=50.141%2C14.432" title="Autoservis Martin Štrunc Map"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 px-6 border-t border-black/5 text-xs text-[#64748B]">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="font-medium text-current">Autoservis Martin Štrunc — Čimice, Praha</div>
+            <div data-cz="© 2026 Všechna práva vyhrazena." data-en="© 2026 All rights reserved.">© 2026 Všechna práva vyhrazena.</div>
+        </div>
+    </footer>
+
+    <!-- Minimalist Booking Modal -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden bg-black/30 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white text-[#141413] rounded-3xl max-w-md w-full p-8 shadow-2xl border border-stone-200 relative">
+            <button onclick="closeBookingModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center text-xs cursor-pointer">✕</button>
+            <h3 class="font-editorial text-3xl font-normal mb-1" data-cz="Online rezervace" data-en="Reserve Your Visit">Online rezervace</h3>
+            <p class="text-xs text-stone-500 mb-6">Autoservis Martin Štrunc • Žalovská 613/35, Praha 8</p>
+
+            <form onsubmit="submitBooking(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-stone-600 mb-1.5" data-cz="Vybraná služba" data-en="Selected Service">Vybraná služba</label>
+                    <select id="modal-service" class="w-full rounded-xl border border-stone-200 bg-stone-50 px-3.5 py-2.5 text-sm">
+                        <option value="Kompletní přezutí a vyvážení kol (4 ks) (od 890 Kč)">Kompletní přezutí a vyvážení kol (4 ks) — od 890 Kč</option><option value="Roční servis: Výměna oleje, filtrů & prohlídka (od 1 490 Kč)">Roční servis: Výměna oleje, filtrů & prohlídka — od 1 490 Kč</option><option value="Počítačová diagnostika řídících jednotek (590 Kč)">Počítačová diagnostika řídících jednotek — 590 Kč</option><option value="Čištění a plnění klimatizace + Ozón (od 990 Kč)">Čištění a plnění klimatizace + Ozón — od 990 Kč</option><option value="Příprava a vyřízení STK + Emise (od 2 400 Kč)">Příprava a vyřízení STK + Emise — od 2 400 Kč</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-medium text-stone-600 mb-1.5" data-cz="Datum" data-en="Date">Datum</label>
+                        <input type="date" id="modal-date" required class="w-full rounded-xl border border-stone-200 bg-stone-50 px-3 py-2.5 text-sm" />
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-stone-600 mb-1.5" data-cz="Čas" data-en="Time">Čas</label>
+                        <input type="time" id="modal-time" value="14:00" required class="w-full rounded-xl border border-stone-200 bg-stone-50 px-3 py-2.5 text-sm" />
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-stone-600 mb-1.5" data-cz="Jméno a telefon" data-en="Your Name & Phone">Jméno a telefon</label>
+                    <input type="text" id="modal-name" placeholder="Jan Novák, +420..." required class="w-full rounded-xl border border-stone-200 bg-stone-50 px-3.5 py-2.5 text-sm" />
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-full font-medium text-sm bg-[#1E293B] hover:bg-[#334155] text-white transition cursor-pointer mt-2" data-cz="Potvrdit rezervaci" data-en="Confirm Request">
+                    Potvrdit rezervaci
+                </button>
+            </form>
+            <div id="booking-success" class="hidden mt-4 p-4 rounded-2xl bg-stone-100 text-stone-800 text-xs font-medium text-center">
+                ✓ <span data-cz="Děkujeme! Vaše rezervace byla přijata." data-en="Thank you! Your request has been received.">Děkujeme! Vaše rezervace byla přijata.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+                el.innerHTML = el.getAttribute('data-' + lang);
+            });
+            const btnCz = document.getElementById('btn-lang-cz');
+            const btnEn = document.getElementById('btn-lang-en');
+            if (lang === 'cz') {
+                btnCz.className = 'px-2.5 py-1 rounded-full font-medium bg-[#1E293B] hover:bg-[#334155] text-white transition cursor-pointer';
+                btnEn.className = 'px-2.5 py-1 rounded-full font-medium text-[#64748B] transition cursor-pointer';
+            } else {
+                btnEn.className = 'px-2.5 py-1 rounded-full font-medium bg-[#1E293B] hover:bg-[#334155] text-white transition cursor-pointer';
+                btnCz.className = 'px-2.5 py-1 rounded-full font-medium text-[#64748B] transition cursor-pointer';
+            }
+        }
+        function openBookingModal() {
+            document.getElementById('booking-modal').classList.remove('hidden');
+            document.getElementById('booking-success').classList.add('hidden');
+            document.getElementById('modal-date').value = new Date().toISOString().split('T')[0];
+        }
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+        }
+        function submitBooking(e) {
+            e.preventDefault();
+            document.getElementById('booking-success').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

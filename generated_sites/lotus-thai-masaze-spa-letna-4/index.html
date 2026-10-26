@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="cs" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lotus Thai Masáže & Spa Letná — Holešovice, Praha</title>
+    <meta name="description" content="Ulevte unaveným zádům a zklidněte mysl. Certifikovaní terapeuti, teplé bio oleje a soukromé relaxační místnosti." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: -0.011em; }
+        .font-editorial { font-family: 'Instrument Serif', Georgia, serif; letter-spacing: -0.02em; }
+    </style>
+</head>
+<body class="bg-[#F7F9F7] text-[#13221B] antialiased">
+
+    <!-- Floating Minimalist Navigation -->
+    <header class="sticky top-0 z-40 backdrop-blur-xl bg-[#F7F9F7]/85 border-[#E1E8E3] border-b">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
+            <a href="#" class="text-lg font-semibold tracking-tight flex items-center gap-2.5">
+                <span>Lotus Thai Masáže & Spa Letná</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm text-[#56695F]">
+                <a href="#about" class="hover:opacity-100 transition" data-cz="O nás" data-en="Philosophy">O nás</a>
+                <a href="#services" class="hover:opacity-100 transition" data-cz="Ceník & Služby" data-en="Services & Menu">Ceník & Služby</a>
+                <a href="#reviews" class="hover:opacity-100 transition" data-cz="Recenze" data-en="Reviews">Recenze</a>
+                <a href="#contact" class="hover:opacity-100 transition" data-cz="Kontakt" data-en="Visit Us">Kontakt</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <!-- Clean Pill Language Switcher -->
+                <div class="inline-flex items-center rounded-full p-1 border bg-white border-[#E1E8E3] text-xs">
+                    <button id="btn-lang-cz" onclick="setLanguage('cz')" class="px-2.5 py-1 rounded-full font-medium bg-[#1B4332] hover:bg-[#23533F] text-white transition cursor-pointer">CZ</button>
+                    <button id="btn-lang-en" onclick="setLanguage('en')" class="px-2.5 py-1 rounded-full font-medium text-[#56695F] transition cursor-pointer">EN</button>
+                </div>
+
+                <button onclick="openBookingModal('')" class="px-5 py-2.5 rounded-full text-xs font-medium bg-[#1B4332] hover:bg-[#23533F] text-white transition cursor-pointer" data-cz="Rezervovat masáž" data-en="Book Session">
+                    Rezervovat masáž
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Spacious Split Editorial Hero Section -->
+    <section class="max-w-6xl mx-auto px-6 pt-14 pb-24 lg:py-24">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div class="lg:col-span-6 space-y-8">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium border bg-[#E6F0EA] text-[#1F4B38] border-[#CFE2D7]">
+                    <span data-cz="Terapeutické Masáže & Relaxace • Holešovice" data-en="Therapeutic Massage & Mindful Spa • Holešovice">Terapeutické Masáže & Relaxace • Holešovice</span>
+                </div>
+
+                <h1 class="font-editorial text-5xl sm:text-6xl leading-[1.06] font-normal tracking-tight" data-cz="Ticho, dotek a hluboké uvolnění v lokalitě Holešovice" data-en="Stillness, Touch & Deep Restoration in Holešovice">
+                    Ticho, dotek a hluboké uvolnění v lokalitě Holešovice
+                </h1>
+
+                <p class="text-base sm:text-lg text-[#56695F] leading-relaxed max-w-xl" data-cz="Ulevte unaveným zádům a zklidněte mysl. Certifikovaní terapeuti, teplé bio oleje a soukromé relaxační místnosti." data-en="Release physical tension and quiet your mind. Certified bodyworkers, warm organic oils, and tranquil private suites.">
+                    Ulevte unaveným zádům a zklidněte mysl. Certifikovaní terapeuti, teplé bio oleje a soukromé relaxační místnosti.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-3.5 pt-2">
+                    <button onclick="openBookingModal('')" class="px-7 py-4 rounded-full text-sm font-medium bg-[#1B4332] hover:bg-[#23533F] text-white transition cursor-pointer flex items-center gap-2">
+                        <span data-cz="Rezervovat masáž" data-en="Book Session">Rezervovat masáž</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                    <a href="#services" class="px-7 py-4 rounded-full text-sm font-medium border bg-white hover:bg-[#EDF3EF] text-[#13221B] border-[#DCE5DF] transition">
+                        <span data-cz="Přehled rituálů" data-en="View Rituals">Přehled rituálů</span>
+                    </a>
+                </div>
+
+                <div class="pt-6 border-t border-black/5 flex items-center gap-8 text-xs text-[#56695F]">
+                    <div>
+                        <span class="font-semibold text-sm text-current">4.8 ★</span>
+                        <span class="ml-1">(115+ Google)</span>
+                    </div>
+                    <div>📍 Milady Horákové 54, 170 00 Praha 7-Holešovice</div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6">
+                <div class="rounded-[32px] overflow-hidden aspect-[4/3] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.08)] bg-stone-200">
+                    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1400&q=85" alt="Lotus Thai Masáže & Spa Letná" class="w-full h-full object-cover" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento Value Propositions -->
+    <section id="about" class="py-20 bg-[#EDF3EF]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="max-w-xl mb-14">
+                <p class="text-xs font-medium uppercase tracking-widest text-[#56695F] mb-3" data-cz="NÁŠ PŘÍSTUP" data-en="OUR PHILOSOPHY">NÁŠ PŘÍSTUP</p>
+                <h2 class="font-editorial text-4xl sm:text-5xl font-normal" data-cz="Důraz na detail, klid a poctivou kvalitu" data-en="Thoughtful craft, calm atmosphere & honest quality">Důraz na detail, klid a poctivou kvalitu</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                
+        <div class="p-8 rounded-3xl border bg-white border-[#E1E8E3] transition-all duration-300 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.06)]">
+            <div class="w-11 h-11 rounded-2xl bg-[#E6F0EA] text-[#1B4332] flex items-center justify-center mb-6">
+                <i data-lucide="feather" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-semibold tracking-tight mb-2.5" data-cz="Terapeutická odbornost" data-en="Clinical & Holistic Touch">Terapeutická odbornost</h3>
+            <p class="text-[#56695F] text-sm leading-relaxed" data-cz="Cílené uvolnění hlubokých svalových vrstev, šíje a beder." data-en="Targeted myofascial release for neck, shoulders, and lower back.">Cílené uvolnění hlubokých svalových vrstev, šíje a beder.</p>
+        </div>
+        
+        <div class="p-8 rounded-3xl border bg-white border-[#E1E8E3] transition-all duration-300 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.06)]">
+            <div class="w-11 h-11 rounded-2xl bg-[#E6F0EA] text-[#1B4332] flex items-center justify-center mb-6">
+                <i data-lucide="droplet" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-semibold tracking-tight mb-2.5" data-cz="Teplé organické oleje" data-en="Warm Botanical Oils">Teplé organické oleje</h3>
+            <p class="text-[#56695F] text-sm leading-relaxed" data-cz="Za studena lisované mandlové a jojobové oleje s esencí eukalyptu." data-en="Cold-pressed almond and jojoba oils infused with calming botanicals.">Za studena lisované mandlové a jojobové oleje s esencí eukalyptu.</p>
+        </div>
+        
+        <div class="p-8 rounded-3xl border bg-white border-[#E1E8E3] transition-all duration-300 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.06)]">
+            <div class="w-11 h-11 rounded-2xl bg-[#E6F0EA] text-[#1B4332] flex items-center justify-center mb-6">
+                <i data-lucide="coffee" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-semibold tracking-tight mb-2.5" data-cz="Bylinný čaj po masáži" data-en="Post-Session Tea Ritual">Bylinný čaj po masáži</h3>
+            <p class="text-[#56695F] text-sm leading-relaxed" data-cz="Každá návštěva končí šálkem sypaného bylinného čaje v klidové zóně." data-en="Unwind after your session with freshly brewed organic herbal tea.">Každá návštěva končí šálkem sypaného bylinného čaje v klidové zóně.</p>
+        </div>
+        
+            </div>
+        </div>
+    </section>
+
+    <!-- Clean Editorial Services & Pricing -->
+    <section id="services" class="py-24 max-w-4xl mx-auto px-6">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-14 gap-4">
+            <div>
+                <p class="text-xs font-medium uppercase tracking-widest text-[#56695F] mb-3" data-cz="CENÍK & NABÍDKA" data-en="TRANSPARENT PRICING">CENÍK & NABÍDKA</p>
+                <h2 class="font-editorial text-4xl sm:text-5xl font-normal" data-cz="Vybrané služby a ceník" data-en="Curated Services & Menu">Vybrané služby a ceník</h2>
+            </div>
+            <button onclick="openBookingModal('')" class="px-5 py-2.5 rounded-full text-xs font-medium bg-[#1B4332] hover:bg-[#23533F] text-white self-start sm:self-auto cursor-pointer" data-cz="Online rezervace" data-en="Book Online">
+                Online rezervace
+            </button>
+        </div>
+        <div class="space-y-3.5">
+            
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#E1E8E3] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Hloubková terapeutická masáž celého těla (60 min)" data-en="Deep Tissue & Full Body Restoration (60 min)">Hloubková terapeutická masáž celého těla (60 min)</h4>
+                <p class="text-sm text-[#56695F]" data-cz="Komplexní uvolnění ztuhlých svalů a podpora regenerace" data-en="Comprehensive muscle tension release and posture relief">Komplexní uvolnění ztuhlých svalů a podpora regenerace</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#1B4332] whitespace-nowrap">990 Kč</span>
+                <button onclick="openBookingModal('Hloubková terapeutická masáž celého těla (60 min)')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#EDF3EF] text-[#13221B] border-[#DCE5DF] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#E1E8E3] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Aroma rituál s teplým bio olejem (60 / 90 min)" data-en="Warm Botanical Oil Ritual (60 / 90 min)">Aroma rituál s teplým bio olejem (60 / 90 min)</h4>
+                <p class="text-sm text-[#56695F]" data-cz="Plynulá relaxační masáž pro odbourání stresu a únavy" data-en="Flowing, deeply calming massage with warm aromatic oils">Plynulá relaxační masáž pro odbourání stresu a únavy</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#1B4332] whitespace-nowrap">1 050 / 1 490 Kč</span>
+                <button onclick="openBookingModal('Aroma rituál s teplým bio olejem (60 / 90 min)')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#EDF3EF] text-[#13221B] border-[#DCE5DF] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#E1E8E3] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Cílená terapie zad, šíje a hlavy (45 min)" data-en="Back, Neck & Cranial Relief (45 min)">Cílená terapie zad, šíje a hlavy (45 min)</h4>
+                <p class="text-sm text-[#56695F]" data-cz="Okamžitá úleva při sedavém zaměstnání a migrénách" data-en="Focused relief for desk tension and headaches">Okamžitá úleva při sedavém zaměstnání a migrénách</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#1B4332] whitespace-nowrap">790 Kč</span>
+                <button onclick="openBookingModal('Cílená terapie zad, šíje a hlavy (45 min)')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#EDF3EF] text-[#13221B] border-[#DCE5DF] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        <div class="py-6 px-7 rounded-2xl border bg-white border-[#E1E8E3] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:shadow-sm">
+            <div class="space-y-1">
+                <h4 class="font-semibold text-base tracking-tight" data-cz="Masáž lávovými kameny & Bylinné měšce (90 min)" data-en="Hot Volcanic Stone & Herbal Compress (90 min)">Masáž lávovými kameny & Bylinné měšce (90 min)</h4>
+                <p class="text-sm text-[#56695F]" data-cz="Hloubkové prohřátí svalů a kloubů přírodními kameny" data-en="Soothing thermal stone therapy for deep relaxation">Hloubkové prohřátí svalů a kloubů přírodními kameny</p>
+            </div>
+            <div class="flex items-center gap-5 shrink-0">
+                <span class="text-base font-semibold text-[#1B4332] whitespace-nowrap">1 590 Kč</span>
+                <button onclick="openBookingModal('Masáž lávovými kameny & Bylinné měšce (90 min)')" class="px-4 py-2 rounded-full text-xs font-medium border bg-white hover:bg-[#EDF3EF] text-[#13221B] border-[#DCE5DF] transition cursor-pointer" data-cz="Rezervovat" data-en="Select">Rezervovat</button>
+            </div>
+        </div>
+        
+        </div>
+    </section>
+
+    <!-- Minimalist Visual Gallery -->
+    <section class="py-12 max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-6">
+            
+        <div class="overflow-hidden rounded-3xl aspect-[4/3] bg-stone-100">
+            <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=800&q=80" alt="Lotus Thai Masáže & Spa Letná" class="w-full h-full object-cover hover:scale-[1.03] transition duration-700 ease-out" loading="lazy" />
+        </div>
+        
+        <div class="overflow-hidden rounded-3xl aspect-[4/3] bg-stone-100">
+            <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=800&q=80" alt="Lotus Thai Masáže & Spa Letná" class="w-full h-full object-cover hover:scale-[1.03] transition duration-700 ease-out" loading="lazy" />
+        </div>
+        
+        <div class="overflow-hidden rounded-3xl aspect-[4/3] bg-stone-100">
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="Lotus Thai Masáže & Spa Letná" class="w-full h-full object-cover hover:scale-[1.03] transition duration-700 ease-out" loading="lazy" />
+        </div>
+        
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="reviews" class="py-24 max-w-6xl mx-auto px-6">
+        <div class="max-w-xl mb-12">
+            <p class="text-xs font-medium uppercase tracking-widest text-[#56695F] mb-3" data-cz="HODNOCENÍ KLIENTŮ" data-en="CLIENT STORIES">HODNOCENÍ KLIENTŮ</p>
+            <h2 class="font-editorial text-4xl font-normal" data-cz="Zkušenosti našich návštěvníků" data-en="Words from Our Community">Zkušenosti našich návštěvníků</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+            
+        <div class="p-8 rounded-3xl border bg-white border-[#E1E8E3] flex flex-col justify-between">
+            <div>
+                <div class="flex items-center gap-1 text-sm mb-4 text-[#1B4332]">
+                    <span>★ ★ ★ ★ ★</span>
+                    <span class="text-xs text-[#56695F] ml-2 font-normal">Google Review</span>
+                </div>
+                <p class="text-base leading-relaxed mb-6" data-cz="&ldquo;Oáza klidu uprostřed Prahy. Po hodině masáže jsem se cítila jako znovuzrozená.&rdquo;" data-en="&ldquo;An oasis of calm in the middle of Prague. Left feeling completely renewed.&rdquo;">&ldquo;Oáza klidu uprostřed Prahy. Po hodině masáže jsem se cítila jako znovuzrozená.&rdquo;</p>
+            </div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-[#56695F]">— Petra Němcová</div>
+        </div>
+        
+        <div class="p-8 rounded-3xl border bg-white border-[#E1E8E3] flex flex-col justify-between">
+            <div>
+                <div class="flex items-center gap-1 text-sm mb-4 text-[#1B4332]">
+                    <span>★ ★ ★ ★ ★</span>
+                    <span class="text-xs text-[#56695F] ml-2 font-normal">Google Review</span>
+                </div>
+                <p class="text-base leading-relaxed mb-6" data-cz="&ldquo;Vynikající terapeutická masáž a nádherný čistý interiér.&rdquo;" data-en="&ldquo;Exceptional therapeutic massage and a serene, spotless interior.&rdquo;">&ldquo;Vynikající terapeutická masáž a nádherný čistý interiér.&rdquo;</p>
+            </div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-[#56695F]">— James Thornton</div>
+        </div>
+        
+        </div>
+    </section>
+
+    <!-- Location & Contact -->
+    <section id="contact" class="py-24 bg-[#EDF3EF]">
+        <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5 space-y-8">
+                <div>
+                    <p class="text-xs font-medium uppercase tracking-widest text-[#56695F] mb-3" data-cz="KONTAKT & ADRESA" data-en="VISIT US">KONTAKT & ADRESA</p>
+                    <h2 class="font-editorial text-4xl sm:text-5xl font-normal mb-4">Lotus Thai Masáže & Spa Letná</h2>
+                    <p class="text-sm text-[#56695F] leading-relaxed" data-cz="Zastavte se u nás osobně nebo si rezervujte termín online." data-en="Visit us in person or reserve your preferred time slot online.">
+                        Zastavte se u nás osobně nebo si rezervujte termín online.
+                    </p>
+                </div>
+
+                <div class="space-y-5 text-sm">
+                    <div class="p-5 rounded-2xl border bg-white border-[#E1E8E3]">
+                        <div class="text-xs text-[#56695F] mb-1" data-cz="Adresa" data-en="Address">Adresa</div>
+                        <div class="font-medium">Milady Horákové 54, 170 00 Praha 7-Holešovice</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Masaze+Milady+Horakove+Praha+7" target="_blank" class="text-xs underline mt-2 inline-block text-[#1B4332]" data-cz="Otevřít v Google Maps →" data-en="Open in Google Maps →">Otevřít v Google Maps →</a>
+                    </div>
+
+                    <div class="p-5 rounded-2xl border bg-white border-[#E1E8E3]">
+                        <div class="text-xs text-[#56695F] mb-1" data-cz="Otevírací doba" data-en="Opening Hours">Otevírací doba</div>
+                        <div class="font-medium">Po-Ne 10:00-21:00</div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl border bg-white border-[#E1E8E3] flex items-center justify-between">
+                        <div>
+                            <div class="text-xs text-[#56695F] mb-1" data-cz="Telefon & WhatsApp" data-en="Direct Contact">Telefon & WhatsApp</div>
+                            <a href="tel:+420776502890" class="font-medium hover:underline">+420 776 502 890</a>
+                        </div>
+                        <a href="https://wa.me/420776502890" target="_blank" class="px-4 py-2 rounded-full text-xs font-medium bg-[#1B4332] hover:bg-[#23533F] text-white">
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7">
+                <div class="rounded-3xl overflow-hidden border bg-white border-[#E1E8E3] h-[420px] shadow-sm bg-stone-100">
+                    <iframe width="100%" height="100%" frameborder="0" scrolling="no" src="https://www.openstreetmap.org/export/embed.html?bbox=14.421%2C50.0955%2C14.431000000000001%2C50.1015&layer=mapnik&marker=50.0985%2C14.426" title="Lotus Thai Masáže & Spa Letná Map"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 px-6 border-t border-black/5 text-xs text-[#56695F]">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="font-medium text-current">Lotus Thai Masáže & Spa Letná — Holešovice, Praha</div>
+            <div data-cz="© 2026 Všechna práva vyhrazena." data-en="© 2026 All rights reserved.">© 2026 Všechna práva vyhrazena.</div>
+        </div>
+    </footer>
+
+    <!-- Minimalist Booking Modal -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden bg-black/30 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white text-[#141413] rounded-3xl max-w-md w-full p-8 shadow-2xl border border-stone-200 relative">
+            <button onclick="closeBookingModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center text-xs cursor-pointer">✕</button>
+            <h3 class="font-editorial text-3xl font-normal mb-1" data-cz="Online rezervace" data-en="Reserve Your Visit">Online rezervace</h3>
+            <p class="text-xs text-stone-500 mb-6">Lotus Thai Masáže & Spa Letná • Milady Horákové 54, 170 00 Praha 7-Holešovice</p>
+
+            <form onsubmit="submitBooking(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-stone-600 mb-1.5" data-cz="Vybraná služba" data-en="Selected Service">Vybraná služba</label>
+                    <select id="modal-service" class="w-full rounded-xl border border-stone-200 bg-stone-50 px-3.5 py-2.5 text-sm">
+                        <option value="Hloubková terapeutická masáž celého těla (60 min) (990 Kč)">Hloubková terapeutická masáž celého těla (60 min) — 990 Kč</option><option value="Aroma rituál s teplým bio olejem (60 / 90 min) (1 050 / 1 490 Kč)">Aroma rituál s teplým bio olejem (60 / 90 min) — 1 050 / 1 490 Kč</option><option value="Cílená terapie zad, šíje a hlavy (45 min) (790 Kč)">Cílená terapie zad, šíje a hlavy (45 min) — 790 Kč</option><option value="Masáž lávovými kameny & Bylinné měšce (90 min) (1 590 Kč)">Masáž lávovými kameny & Bylinné měšce (90 min) — 1 590 Kč</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-medium text-stone-600 mb-1.5" data-cz="Datum" data-en="Date">Datum</label>
+                        <input type="date" id="modal-date" required class="w-full rounded-xl border border-stone-200 bg-stone-50 px-3 py-2.5 text-sm" />
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-stone-600 mb-1.5" data-cz="Čas" data-en="Time">Čas</label>
+                        <input type="time" id="modal-time" value="14:00" required class="w-full rounded-xl border border-stone-200 bg-stone-50 px-3 py-2.5 text-sm" />
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-stone-600 mb-1.5" data-cz="Jméno a telefon" data-en="Your Name & Phone">Jméno a telefon</label>
+                    <input type="text" id="modal-name" placeholder="Jan Novák, +420..." required class="w-full rounded-xl border border-stone-200 bg-stone-50 px-3.5 py-2.5 text-sm" />
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-full font-medium text-sm bg-[#1B4332] hover:bg-[#23533F] text-white transition cursor-pointer mt-2" data-cz="Potvrdit rezervaci" data-en="Confirm Request">
+                    Potvrdit rezervaci
+                </button>
+            </form>
+            <div id="booking-success" class="hidden mt-4 p-4 rounded-2xl bg-stone-100 text-stone-800 text-xs font-medium text-center">
+                ✓ <span data-cz="Děkujeme! Vaše rezervace byla přijata." data-en="Thank you! Your request has been received.">Děkujeme! Vaše rezervace byla přijata.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+                el.innerHTML = el.getAttribute('data-' + lang);
+            });
+            const btnCz = document.getElementById('btn-lang-cz');
+            const btnEn = document.getElementById('btn-lang-en');
+            if (lang === 'cz') {
+                btnCz.className = 'px-2.5 py-1 rounded-full font-medium bg-[#1B4332] hover:bg-[#23533F] text-white transition cursor-pointer';
+                btnEn.className = 'px-2.5 py-1 rounded-full font-medium text-[#56695F] transition cursor-pointer';
+            } else {
+                btnEn.className = 'px-2.5 py-1 rounded-full font-medium bg-[#1B4332] hover:bg-[#23533F] text-white transition cursor-pointer';
+                btnCz.className = 'px-2.5 py-1 rounded-full font-medium text-[#56695F] transition cursor-pointer';
+            }
+        }
+        function openBookingModal() {
+            document.getElementById('booking-modal').classList.remove('hidden');
+            document.getElementById('booking-success').classList.add('hidden');
+            document.getElementById('modal-date').value = new Date().toISOString().split('T')[0];
+        }
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+        }
+        function submitBooking(e) {
+            e.preventDefault();
+            document.getElementById('booking-success').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
